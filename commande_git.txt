@@ -20,4 +20,7 @@ ajouter un dossier sur git :
 	git status (pour voir si les fichiers vont bien être ajouter)
 	git commit -m 'message afficher sur git'
 	git push ceph master
-	
+
+si il y a des problème : 
+git log
+Enjoy !	
