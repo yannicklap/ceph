@@ -8,6 +8,10 @@ ajouter les nouveaux fichiers dans le dossier ceph
 	git add <nom du fichier> (ou . pour tous ajouter)
 	git commit -m 'message afficher sur git'
 	git push ceph master
+	ou
+	git add : selects changes
+	git commit : records changes
+	git push : shares changes
 
 ajouter un dossier sur git : 
 	dans le dossier ceph :
