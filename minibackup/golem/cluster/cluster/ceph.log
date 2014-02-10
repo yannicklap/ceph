@@ -1,0 +1,787 @@
+2014-02-05 17:15:28,401 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy new golem
+2014-02-05 17:15:28,402 [ceph_deploy.new][DEBUG ] Creating new cluster named ceph
+2014-02-05 17:15:28,403 [ceph_deploy.new][DEBUG ] Resolving host golem
+2014-02-05 17:15:28,403 [ceph_deploy.new][DEBUG ] Monitor golem at 192.168.1.51
+2014-02-05 17:15:28,404 [ceph_deploy.new][INFO  ] making sure passwordless SSH succeeds
+2014-02-05 17:15:28,404 [ceph_deploy.new][DEBUG ] Monitor initial members are ['golem']
+2014-02-05 17:15:28,405 [ceph_deploy.new][DEBUG ] Monitor addrs are ['192.168.1.51']
+2014-02-05 17:15:28,405 [ceph_deploy.new][DEBUG ] Creating a random mon key...
+2014-02-05 17:15:28,406 [ceph_deploy.new][DEBUG ] Writing initial config to ceph.conf...
+2014-02-05 17:15:28,406 [ceph_deploy.new][DEBUG ] Writing monitor keyring to ceph.mon.keyring...
+2014-02-05 17:20:28,038 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy install --no-adjust-repos golem rondoudou carapuce
+2014-02-05 17:20:28,038 [ceph_deploy.install][DEBUG ] Installing stable version emperor on cluster ceph hosts golem rondoudou carapuce
+2014-02-05 17:20:28,039 [ceph_deploy.install][DEBUG ] Detecting platform for host golem ...
+2014-02-05 17:20:28,257 [golem][DEBUG ] connected to host: golem 
+2014-02-05 17:20:28,258 [golem][DEBUG ] detect platform information from remote host
+2014-02-05 17:20:28,307 [golem][DEBUG ] detect machine type
+2014-02-05 17:20:28,312 [ceph_deploy.install][INFO  ] Distro info: debian 7.3 wheezy
+2014-02-05 17:20:28,312 [golem][INFO  ] installing ceph on golem
+2014-02-05 17:20:28,312 [golem][INFO  ] Running command: sudo env DEBIAN_FRONTEND=noninteractive apt-get -q install --assume-yes ca-certificates
+2014-02-05 17:20:28,954 [golem][DEBUG ] Reading package lists...
+2014-02-05 17:20:28,955 [golem][DEBUG ] Building dependency tree...
+2014-02-05 17:20:28,955 [golem][DEBUG ] Reading state information...
+2014-02-05 17:20:28,955 [golem][DEBUG ] ca-certificates is already the newest version.
+2014-02-05 17:20:28,955 [golem][DEBUG ] 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+2014-02-05 17:20:28,956 [golem][INFO  ] Running command: sudo apt-get -q update
+2014-02-05 17:20:34,785 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy Release.gpg
+2014-02-05 17:20:34,786 [golem][DEBUG ] Get:1 http://ftp.fr.debian.org wheezy-updates Release.gpg [836 B]
+2014-02-05 17:20:34,786 [golem][DEBUG ] Hit http://security.debian.org wheezy/updates Release.gpg
+2014-02-05 17:20:34,787 [golem][DEBUG ] Hit http://security.debian.org wheezy/updates Release
+2014-02-05 17:20:34,787 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy Release
+2014-02-05 17:20:34,788 [golem][DEBUG ] Get:2 http://ftp.fr.debian.org wheezy-updates Release [124 kB]
+2014-02-05 17:20:34,789 [golem][DEBUG ] Hit http://security.debian.org wheezy/updates/main Sources
+2014-02-05 17:20:34,789 [golem][DEBUG ] Hit http://security.debian.org wheezy/updates/main amd64 Packages
+2014-02-05 17:20:34,790 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Sources
+2014-02-05 17:20:34,790 [golem][DEBUG ] Hit http://security.debian.org wheezy/updates/main Translation-en
+2014-02-05 17:20:34,790 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main amd64 Packages
+2014-02-05 17:20:34,791 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Translation-en
+2014-02-05 17:20:34,792 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Translation-fr
+2014-02-05 17:20:34,792 [golem][DEBUG ] Get:3 http://ftp.fr.debian.org wheezy-updates/main Sources [2981 B]
+2014-02-05 17:20:34,793 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates/main amd64 Packages/DiffIndex
+2014-02-05 17:20:34,793 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates/main Translation-en/DiffIndex
+2014-02-05 17:20:34,794 [golem][DEBUG ] Hit http://ceph.com wheezy Release.gpg
+2014-02-05 17:20:34,794 [golem][DEBUG ] Hit http://ceph.com wheezy Release
+2014-02-05 17:20:34,794 [golem][DEBUG ] Hit http://ceph.com wheezy/main amd64 Packages
+2014-02-05 17:20:34,795 [golem][DEBUG ] Ign http://ceph.com wheezy/main Translation-en
+2014-02-05 17:20:34,795 [golem][DEBUG ] Ign http://ceph.com wheezy/main Translation-fr
+2014-02-05 17:20:34,795 [golem][DEBUG ] Fetched 128 kB in 2s (56.8 kB/s)
+2014-02-05 17:20:34,796 [golem][DEBUG ] Reading package lists...
+2014-02-05 17:20:34,796 [golem][INFO  ] Running command: sudo env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -q -o Dpkg::Options::=--force-confnew --no-install-recommends --assume-yes install -- ceph ceph-mds ceph-common ceph-fs-common gdisk
+2014-02-05 17:20:35,469 [golem][DEBUG ] Reading package lists...
+2014-02-05 17:20:35,469 [golem][DEBUG ] Building dependency tree...
+2014-02-05 17:20:35,469 [golem][DEBUG ] Reading state information...
+2014-02-05 17:20:35,469 [golem][DEBUG ] gdisk is already the newest version.
+2014-02-05 17:20:35,470 [golem][DEBUG ] ceph is already the newest version.
+2014-02-05 17:20:35,470 [golem][DEBUG ] ceph-common is already the newest version.
+2014-02-05 17:20:35,470 [golem][DEBUG ] ceph-fs-common is already the newest version.
+2014-02-05 17:20:35,470 [golem][DEBUG ] ceph-mds is already the newest version.
+2014-02-05 17:20:35,471 [golem][DEBUG ] ceph-mds set to manually installed.
+2014-02-05 17:20:35,471 [golem][DEBUG ] 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+2014-02-05 17:20:35,471 [golem][INFO  ] Running command: sudo ceph --version
+2014-02-05 17:20:35,692 [golem][DEBUG ] ceph version 0.72.2 (a913ded2ff138aefb8cb84d347d72164099cfd60)
+2014-02-05 17:20:35,693 [ceph_deploy.install][DEBUG ] Detecting platform for host rondoudou ...
+2014-02-05 17:20:36,109 [rondoudou][DEBUG ] connected to host: rondoudou 
+2014-02-05 17:20:36,110 [rondoudou][DEBUG ] detect platform information from remote host
+2014-02-05 17:20:36,285 [rondoudou][DEBUG ] detect machine type
+2014-02-05 17:20:36,289 [ceph_deploy.install][INFO  ] Distro info: debian 7.3 wheezy
+2014-02-05 17:20:36,290 [rondoudou][INFO  ] installing ceph on rondoudou
+2014-02-05 17:20:36,290 [rondoudou][INFO  ] Running command: sudo env DEBIAN_FRONTEND=noninteractive apt-get -q install --assume-yes ca-certificates
+2014-02-05 17:20:37,012 [rondoudou][DEBUG ] Reading package lists...
+2014-02-05 17:20:37,012 [rondoudou][DEBUG ] Building dependency tree...
+2014-02-05 17:20:37,013 [rondoudou][DEBUG ] Reading state information...
+2014-02-05 17:20:37,013 [rondoudou][DEBUG ] ca-certificates is already the newest version.
+2014-02-05 17:20:37,013 [rondoudou][DEBUG ] 0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+2014-02-05 17:20:37,014 [rondoudou][INFO  ] Running command: sudo apt-get -q update
+2014-02-05 17:20:43,344 [rondoudou][WARNING] W: GPG error: http://ceph.com wheezy Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 7EBFDD5D17ED316D
+2014-02-05 17:20:43,345 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy Release.gpg
+2014-02-05 17:20:43,346 [rondoudou][DEBUG ] Hit http://security.debian.org wheezy/updates Release.gpg
+2014-02-05 17:20:43,346 [rondoudou][DEBUG ] Get:1 http://ftp.fr.debian.org wheezy-updates Release.gpg [836 B]
+2014-02-05 17:20:43,346 [rondoudou][DEBUG ] Hit http://security.debian.org wheezy/updates Release
+2014-02-05 17:20:43,347 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy Release
+2014-02-05 17:20:43,347 [rondoudou][DEBUG ] Get:2 http://ftp.fr.debian.org wheezy-updates Release [124 kB]
+2014-02-05 17:20:43,347 [rondoudou][DEBUG ] Hit http://security.debian.org wheezy/updates/main Sources
+2014-02-05 17:20:43,347 [rondoudou][DEBUG ] Hit http://security.debian.org wheezy/updates/main i386 Packages
+2014-02-05 17:20:43,348 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Sources
+2014-02-05 17:20:43,348 [rondoudou][DEBUG ] Hit http://security.debian.org wheezy/updates/main Translation-en
+2014-02-05 17:20:43,348 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main i386 Packages
+2014-02-05 17:20:43,348 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Translation-en
+2014-02-05 17:20:43,349 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Translation-fr
+2014-02-05 17:20:43,349 [rondoudou][DEBUG ] Get:3 http://ftp.fr.debian.org wheezy-updates/main Sources [2981 B]
+2014-02-05 17:20:43,349 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates/main i386 Packages/DiffIndex
+2014-02-05 17:20:43,349 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates/main Translation-en/DiffIndex
+2014-02-05 17:20:43,350 [rondoudou][DEBUG ] Get:4 http://ceph.com wheezy Release.gpg [836 B]
+2014-02-05 17:20:43,350 [rondoudou][DEBUG ] Hit http://ceph.com wheezy Release
+2014-02-05 17:20:43,350 [rondoudou][DEBUG ] Ign http://ceph.com wheezy Release
+2014-02-05 17:20:43,350 [rondoudou][DEBUG ] Ign http://ceph.com wheezy/main i386 Packages/DiffIndex
+2014-02-05 17:20:43,351 [rondoudou][DEBUG ] Hit http://ceph.com wheezy/main i386 Packages
+2014-02-05 17:20:43,351 [rondoudou][DEBUG ] Ign http://ceph.com wheezy/main Translation-en
+2014-02-05 17:20:43,351 [rondoudou][DEBUG ] Ign http://ceph.com wheezy/main Translation-fr
+2014-02-05 17:20:43,351 [rondoudou][DEBUG ] Fetched 128 kB in 2s (54.8 kB/s)
+2014-02-05 17:20:43,351 [rondoudou][DEBUG ] Reading package lists...
+2014-02-05 17:20:43,352 [rondoudou][INFO  ] Running command: sudo env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -q -o Dpkg::Options::=--force-confnew --no-install-recommends --assume-yes install -- ceph ceph-mds ceph-common ceph-fs-common gdisk
+2014-02-05 17:20:44,073 [rondoudou][WARNING] E: There are problems and -y was used without --force-yes
+2014-02-05 17:20:44,073 [rondoudou][DEBUG ] Reading package lists...
+2014-02-05 17:20:44,074 [rondoudou][DEBUG ] Building dependency tree...
+2014-02-05 17:20:44,074 [rondoudou][DEBUG ] Reading state information...
+2014-02-05 17:20:44,074 [rondoudou][DEBUG ] gdisk is already the newest version.
+2014-02-05 17:20:44,074 [rondoudou][DEBUG ] The following extra packages will be installed:
+2014-02-05 17:20:44,075 [rondoudou][DEBUG ]   libaio1 libboost-system1.49.0 libgoogle-perftools4 libjs-jquery libleveldb1
+2014-02-05 17:20:44,075 [rondoudou][DEBUG ]   librados2 librbd1 libsnappy1 libtcmalloc-minimal4 python-ceph python-flask
+2014-02-05 17:20:44,075 [rondoudou][DEBUG ]   python-jinja2 python-requests python-six python-werkzeug
+2014-02-05 17:20:44,075 [rondoudou][DEBUG ] Suggested packages:
+2014-02-05 17:20:44,076 [rondoudou][DEBUG ]   python-jinja2-doc ipython python-genshi python-lxml python-memcache
+2014-02-05 17:20:44,076 [rondoudou][DEBUG ]   libjs-sphinxdoc
+2014-02-05 17:20:44,076 [rondoudou][DEBUG ] Recommended packages:
+2014-02-05 17:20:44,076 [rondoudou][DEBUG ]   btrfs-tools ceph-fuse libcephfs1 javascript-common python-gevent
+2014-02-05 17:20:44,077 [rondoudou][DEBUG ]   python-oauthlib python-openssl
+2014-02-05 17:20:44,077 [rondoudou][DEBUG ] The following NEW packages will be installed:
+2014-02-05 17:20:44,077 [rondoudou][DEBUG ]   ceph ceph-common ceph-fs-common ceph-mds libaio1 libboost-system1.49.0
+2014-02-05 17:20:44,077 [rondoudou][DEBUG ]   libgoogle-perftools4 libjs-jquery libleveldb1 librados2 librbd1 libsnappy1
+2014-02-05 17:20:44,078 [rondoudou][DEBUG ]   libtcmalloc-minimal4 python-ceph python-flask python-jinja2 python-requests
+2014-02-05 17:20:44,078 [rondoudou][DEBUG ]   python-six python-werkzeug
+2014-02-05 17:20:44,078 [rondoudou][DEBUG ] 0 upgraded, 19 newly installed, 0 to remove and 1 not upgraded.
+2014-02-05 17:20:44,078 [rondoudou][DEBUG ] Need to get 0 B/36.3 MB of archives.
+2014-02-05 17:20:44,078 [rondoudou][DEBUG ] After this operation, 150 MB of additional disk space will be used.
+2014-02-05 17:20:44,079 [rondoudou][DEBUG ] WARNING: The following packages cannot be authenticated!
+2014-02-05 17:20:44,079 [rondoudou][DEBUG ]   librados2 librbd1 python-ceph ceph-common ceph ceph-fs-common ceph-mds
+2014-02-05 17:20:44,080 [rondoudou][ERROR ] RuntimeError: command returned non-zero exit status: 100
+2014-02-05 17:20:44,080 [ceph_deploy][ERROR ] RuntimeError: Failed to execute command: env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -q -o Dpkg::Options::=--force-confnew --no-install-recommends --assume-yes install -- ceph ceph-mds ceph-common ceph-fs-common gdisk
+
+2014-02-05 17:22:00,181 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy new rondoudou
+2014-02-05 17:22:00,182 [ceph_deploy.new][DEBUG ] Creating new cluster named ceph
+2014-02-05 17:22:00,182 [ceph_deploy.new][DEBUG ] Resolving host rondoudou
+2014-02-05 17:22:00,183 [ceph_deploy.new][DEBUG ] Monitor rondoudou at 192.168.1.29
+2014-02-05 17:22:00,183 [ceph_deploy.new][INFO  ] making sure passwordless SSH succeeds
+2014-02-05 17:22:00,275 [rondoudou][DEBUG ] connected to host: golem 
+2014-02-05 17:22:00,276 [rondoudou][INFO  ] Running command: ssh -CT -o BatchMode=yes rondoudou
+2014-02-05 17:22:00,500 [ceph_deploy.new][DEBUG ] Monitor initial members are ['rondoudou']
+2014-02-05 17:22:00,500 [ceph_deploy.new][DEBUG ] Monitor addrs are ['192.168.1.29']
+2014-02-05 17:22:00,500 [ceph_deploy.new][DEBUG ] Creating a random mon key...
+2014-02-05 17:22:00,501 [ceph_deploy.new][DEBUG ] Writing initial config to ceph.conf...
+2014-02-05 17:22:00,501 [ceph_deploy.new][DEBUG ] Writing monitor keyring to ceph.mon.keyring...
+2014-02-05 17:22:11,179 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy new carapuce
+2014-02-05 17:22:11,180 [ceph_deploy.new][DEBUG ] Creating new cluster named ceph
+2014-02-05 17:22:11,181 [ceph_deploy.new][DEBUG ] Resolving host carapuce
+2014-02-05 17:22:11,182 [ceph_deploy.new][DEBUG ] Monitor carapuce at 192.168.1.43
+2014-02-05 17:22:11,182 [ceph_deploy.new][INFO  ] making sure passwordless SSH succeeds
+2014-02-05 17:22:11,275 [carapuce][DEBUG ] connected to host: golem 
+2014-02-05 17:22:11,275 [carapuce][INFO  ] Running command: ssh -CT -o BatchMode=yes carapuce
+2014-02-05 17:22:11,599 [ceph_deploy.new][DEBUG ] Monitor initial members are ['carapuce']
+2014-02-05 17:22:11,600 [ceph_deploy.new][DEBUG ] Monitor addrs are ['192.168.1.43']
+2014-02-05 17:22:11,600 [ceph_deploy.new][DEBUG ] Creating a random mon key...
+2014-02-05 17:22:11,601 [ceph_deploy.new][DEBUG ] Writing initial config to ceph.conf...
+2014-02-05 17:22:11,601 [ceph_deploy.new][DEBUG ] Writing monitor keyring to ceph.mon.keyring...
+2014-02-05 17:22:15,233 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy install --no-adjust-repos golem rondoudou carapuce
+2014-02-05 17:22:15,233 [ceph_deploy.install][DEBUG ] Installing stable version emperor on cluster ceph hosts golem rondoudou carapuce
+2014-02-05 17:22:15,234 [ceph_deploy.install][DEBUG ] Detecting platform for host golem ...
+2014-02-05 17:22:15,333 [golem][DEBUG ] connected to host: golem 
+2014-02-05 17:22:15,334 [golem][DEBUG ] detect platform information from remote host
+2014-02-05 17:22:15,365 [golem][DEBUG ] detect machine type
+2014-02-05 17:22:15,370 [ceph_deploy.install][INFO  ] Distro info: debian 7.3 wheezy
+2014-02-05 17:22:15,370 [golem][INFO  ] installing ceph on golem
+2014-02-05 17:22:15,370 [golem][INFO  ] Running command: sudo env DEBIAN_FRONTEND=noninteractive apt-get -q install --assume-yes ca-certificates
+2014-02-05 17:22:15,998 [golem][DEBUG ] Reading package lists...
+2014-02-05 17:22:15,999 [golem][DEBUG ] Building dependency tree...
+2014-02-05 17:22:15,999 [golem][DEBUG ] Reading state information...
+2014-02-05 17:22:15,999 [golem][DEBUG ] ca-certificates is already the newest version.
+2014-02-05 17:22:15,999 [golem][DEBUG ] 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+2014-02-05 17:22:16,000 [golem][INFO  ] Running command: sudo apt-get -q update
+2014-02-05 17:22:21,630 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy Release.gpg
+2014-02-05 17:22:21,630 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates Release.gpg
+2014-02-05 17:22:21,630 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy Release
+2014-02-05 17:22:21,630 [golem][DEBUG ] Hit http://security.debian.org wheezy/updates Release.gpg
+2014-02-05 17:22:21,631 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates Release
+2014-02-05 17:22:21,631 [golem][DEBUG ] Hit http://security.debian.org wheezy/updates Release
+2014-02-05 17:22:21,631 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Sources
+2014-02-05 17:22:21,631 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main amd64 Packages
+2014-02-05 17:22:21,632 [golem][DEBUG ] Hit http://security.debian.org wheezy/updates/main Sources
+2014-02-05 17:22:21,632 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Translation-en
+2014-02-05 17:22:21,632 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Translation-fr
+2014-02-05 17:22:21,632 [golem][DEBUG ] Hit http://security.debian.org wheezy/updates/main amd64 Packages
+2014-02-05 17:22:21,633 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates/main Sources
+2014-02-05 17:22:21,633 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates/main amd64 Packages/DiffIndex
+2014-02-05 17:22:21,634 [golem][DEBUG ] Hit http://security.debian.org wheezy/updates/main Translation-en
+2014-02-05 17:22:21,634 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates/main Translation-en/DiffIndex
+2014-02-05 17:22:21,634 [golem][DEBUG ] Hit http://ceph.com wheezy Release.gpg
+2014-02-05 17:22:21,635 [golem][DEBUG ] Hit http://ceph.com wheezy Release
+2014-02-05 17:22:21,635 [golem][DEBUG ] Hit http://ceph.com wheezy/main amd64 Packages
+2014-02-05 17:22:21,635 [golem][DEBUG ] Ign http://ceph.com wheezy/main Translation-en
+2014-02-05 17:22:21,636 [golem][DEBUG ] Ign http://ceph.com wheezy/main Translation-fr
+2014-02-05 17:22:21,636 [golem][DEBUG ] Reading package lists...
+2014-02-05 17:22:21,637 [golem][INFO  ] Running command: sudo env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -q -o Dpkg::Options::=--force-confnew --no-install-recommends --assume-yes install -- ceph ceph-mds ceph-common ceph-fs-common gdisk
+2014-02-05 17:22:22,259 [golem][DEBUG ] Reading package lists...
+2014-02-05 17:22:22,260 [golem][DEBUG ] Building dependency tree...
+2014-02-05 17:22:22,260 [golem][DEBUG ] Reading state information...
+2014-02-05 17:22:22,260 [golem][DEBUG ] gdisk is already the newest version.
+2014-02-05 17:22:22,260 [golem][DEBUG ] ceph is already the newest version.
+2014-02-05 17:22:22,261 [golem][DEBUG ] ceph-common is already the newest version.
+2014-02-05 17:22:22,261 [golem][DEBUG ] ceph-fs-common is already the newest version.
+2014-02-05 17:22:22,261 [golem][DEBUG ] ceph-mds is already the newest version.
+2014-02-05 17:22:22,261 [golem][DEBUG ] 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+2014-02-05 17:22:22,261 [golem][INFO  ] Running command: sudo ceph --version
+2014-02-05 17:22:22,432 [golem][DEBUG ] ceph version 0.72.2 (a913ded2ff138aefb8cb84d347d72164099cfd60)
+2014-02-05 17:22:22,433 [ceph_deploy.install][DEBUG ] Detecting platform for host rondoudou ...
+2014-02-05 17:22:22,661 [rondoudou][DEBUG ] connected to host: rondoudou 
+2014-02-05 17:22:22,662 [rondoudou][DEBUG ] detect platform information from remote host
+2014-02-05 17:22:22,692 [rondoudou][DEBUG ] detect machine type
+2014-02-05 17:22:22,697 [ceph_deploy.install][INFO  ] Distro info: debian 7.3 wheezy
+2014-02-05 17:22:22,697 [rondoudou][INFO  ] installing ceph on rondoudou
+2014-02-05 17:22:22,698 [rondoudou][INFO  ] Running command: sudo env DEBIAN_FRONTEND=noninteractive apt-get -q install --assume-yes ca-certificates
+2014-02-05 17:22:23,370 [rondoudou][DEBUG ] Reading package lists...
+2014-02-05 17:22:23,370 [rondoudou][DEBUG ] Building dependency tree...
+2014-02-05 17:22:23,370 [rondoudou][DEBUG ] Reading state information...
+2014-02-05 17:22:23,371 [rondoudou][DEBUG ] ca-certificates is already the newest version.
+2014-02-05 17:22:23,371 [rondoudou][DEBUG ] 0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+2014-02-05 17:22:23,372 [rondoudou][INFO  ] Running command: sudo apt-get -q update
+2014-02-05 17:22:29,700 [rondoudou][WARNING] W: GPG error: http://ceph.com wheezy Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 7EBFDD5D17ED316D
+2014-02-05 17:22:29,700 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy Release.gpg
+2014-02-05 17:22:29,701 [rondoudou][DEBUG ] Hit http://security.debian.org wheezy/updates Release.gpg
+2014-02-05 17:22:29,701 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates Release.gpg
+2014-02-05 17:22:29,701 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy Release
+2014-02-05 17:22:29,702 [rondoudou][DEBUG ] Hit http://security.debian.org wheezy/updates Release
+2014-02-05 17:22:29,702 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates Release
+2014-02-05 17:22:29,703 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Sources
+2014-02-05 17:22:29,703 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main i386 Packages
+2014-02-05 17:22:29,703 [rondoudou][DEBUG ] Hit http://security.debian.org wheezy/updates/main Sources
+2014-02-05 17:22:29,704 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Translation-en
+2014-02-05 17:22:29,704 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Translation-fr
+2014-02-05 17:22:29,704 [rondoudou][DEBUG ] Hit http://security.debian.org wheezy/updates/main i386 Packages
+2014-02-05 17:22:29,705 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates/main Sources
+2014-02-05 17:22:29,705 [rondoudou][DEBUG ] Hit http://security.debian.org wheezy/updates/main Translation-en
+2014-02-05 17:22:29,706 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates/main i386 Packages/DiffIndex
+2014-02-05 17:22:29,706 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates/main Translation-en/DiffIndex
+2014-02-05 17:22:29,706 [rondoudou][DEBUG ] Get:1 http://ceph.com wheezy Release.gpg [836 B]
+2014-02-05 17:22:29,707 [rondoudou][DEBUG ] Hit http://ceph.com wheezy Release
+2014-02-05 17:22:29,707 [rondoudou][DEBUG ] Ign http://ceph.com wheezy Release
+2014-02-05 17:22:29,707 [rondoudou][DEBUG ] Ign http://ceph.com wheezy/main i386 Packages/DiffIndex
+2014-02-05 17:22:29,708 [rondoudou][DEBUG ] Hit http://ceph.com wheezy/main i386 Packages
+2014-02-05 17:22:29,708 [rondoudou][DEBUG ] Ign http://ceph.com wheezy/main Translation-en
+2014-02-05 17:22:29,709 [rondoudou][DEBUG ] Ign http://ceph.com wheezy/main Translation-fr
+2014-02-05 17:22:29,709 [rondoudou][DEBUG ] Fetched 836 B in 2s (354 B/s)
+2014-02-05 17:22:29,709 [rondoudou][DEBUG ] Reading package lists...
+2014-02-05 17:22:29,710 [rondoudou][INFO  ] Running command: sudo env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -q -o Dpkg::Options::=--force-confnew --no-install-recommends --assume-yes install -- ceph ceph-mds ceph-common ceph-fs-common gdisk
+2014-02-05 17:22:30,431 [rondoudou][WARNING] E: There are problems and -y was used without --force-yes
+2014-02-05 17:22:30,431 [rondoudou][DEBUG ] Reading package lists...
+2014-02-05 17:22:30,432 [rondoudou][DEBUG ] Building dependency tree...
+2014-02-05 17:22:30,432 [rondoudou][DEBUG ] Reading state information...
+2014-02-05 17:22:30,433 [rondoudou][DEBUG ] gdisk is already the newest version.
+2014-02-05 17:22:30,433 [rondoudou][DEBUG ] The following extra packages will be installed:
+2014-02-05 17:22:30,433 [rondoudou][DEBUG ]   libaio1 libboost-system1.49.0 libgoogle-perftools4 libjs-jquery libleveldb1
+2014-02-05 17:22:30,434 [rondoudou][DEBUG ]   librados2 librbd1 libsnappy1 libtcmalloc-minimal4 python-ceph python-flask
+2014-02-05 17:22:30,434 [rondoudou][DEBUG ]   python-jinja2 python-requests python-six python-werkzeug
+2014-02-05 17:22:30,435 [rondoudou][DEBUG ] Suggested packages:
+2014-02-05 17:22:30,435 [rondoudou][DEBUG ]   python-jinja2-doc ipython python-genshi python-lxml python-memcache
+2014-02-05 17:22:30,435 [rondoudou][DEBUG ]   libjs-sphinxdoc
+2014-02-05 17:22:30,436 [rondoudou][DEBUG ] Recommended packages:
+2014-02-05 17:22:30,436 [rondoudou][DEBUG ]   btrfs-tools ceph-fuse libcephfs1 javascript-common python-gevent
+2014-02-05 17:22:30,436 [rondoudou][DEBUG ]   python-oauthlib python-openssl
+2014-02-05 17:22:30,437 [rondoudou][DEBUG ] The following NEW packages will be installed:
+2014-02-05 17:22:30,437 [rondoudou][DEBUG ]   ceph ceph-common ceph-fs-common ceph-mds libaio1 libboost-system1.49.0
+2014-02-05 17:22:30,438 [rondoudou][DEBUG ]   libgoogle-perftools4 libjs-jquery libleveldb1 librados2 librbd1 libsnappy1
+2014-02-05 17:22:30,438 [rondoudou][DEBUG ]   libtcmalloc-minimal4 python-ceph python-flask python-jinja2 python-requests
+2014-02-05 17:22:30,438 [rondoudou][DEBUG ]   python-six python-werkzeug
+2014-02-05 17:22:30,439 [rondoudou][DEBUG ] 0 upgraded, 19 newly installed, 0 to remove and 1 not upgraded.
+2014-02-05 17:22:30,439 [rondoudou][DEBUG ] Need to get 0 B/36.3 MB of archives.
+2014-02-05 17:22:30,439 [rondoudou][DEBUG ] After this operation, 150 MB of additional disk space will be used.
+2014-02-05 17:22:30,440 [rondoudou][DEBUG ] WARNING: The following packages cannot be authenticated!
+2014-02-05 17:22:30,440 [rondoudou][DEBUG ]   librados2 librbd1 python-ceph ceph-common ceph ceph-fs-common ceph-mds
+2014-02-05 17:22:30,441 [rondoudou][ERROR ] RuntimeError: command returned non-zero exit status: 100
+2014-02-05 17:22:30,441 [ceph_deploy][ERROR ] RuntimeError: Failed to execute command: env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -q -o Dpkg::Options::=--force-confnew --no-install-recommends --assume-yes install -- ceph ceph-mds ceph-common ceph-fs-common gdisk
+
+2014-02-05 17:26:44,658 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy install --no-adjust-repos golem rondoudou carapuce
+2014-02-05 17:26:44,659 [ceph_deploy.install][DEBUG ] Installing stable version emperor on cluster ceph hosts golem rondoudou carapuce
+2014-02-05 17:26:44,659 [ceph_deploy.install][DEBUG ] Detecting platform for host golem ...
+2014-02-05 17:26:44,761 [golem][DEBUG ] connected to host: golem 
+2014-02-05 17:26:44,762 [golem][DEBUG ] detect platform information from remote host
+2014-02-05 17:26:44,792 [golem][DEBUG ] detect machine type
+2014-02-05 17:26:44,796 [ceph_deploy.install][INFO  ] Distro info: debian 7.3 wheezy
+2014-02-05 17:26:44,797 [golem][INFO  ] installing ceph on golem
+2014-02-05 17:26:44,797 [golem][INFO  ] Running command: sudo env DEBIAN_FRONTEND=noninteractive apt-get -q install --assume-yes ca-certificates
+2014-02-05 17:26:45,425 [golem][DEBUG ] Reading package lists...
+2014-02-05 17:26:45,425 [golem][DEBUG ] Building dependency tree...
+2014-02-05 17:26:45,426 [golem][DEBUG ] Reading state information...
+2014-02-05 17:26:45,426 [golem][DEBUG ] ca-certificates is already the newest version.
+2014-02-05 17:26:45,426 [golem][DEBUG ] 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+2014-02-05 17:26:45,426 [golem][INFO  ] Running command: sudo apt-get -q update
+2014-02-05 17:26:51,258 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy Release.gpg
+2014-02-05 17:26:51,258 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates Release.gpg
+2014-02-05 17:26:51,258 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy Release
+2014-02-05 17:26:51,258 [golem][DEBUG ] Hit http://security.debian.org wheezy/updates Release.gpg
+2014-02-05 17:26:51,259 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates Release
+2014-02-05 17:26:51,259 [golem][DEBUG ] Hit http://security.debian.org wheezy/updates Release
+2014-02-05 17:26:51,259 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Sources
+2014-02-05 17:26:51,259 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main amd64 Packages
+2014-02-05 17:26:51,259 [golem][DEBUG ] Hit http://security.debian.org wheezy/updates/main Sources
+2014-02-05 17:26:51,260 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Translation-en
+2014-02-05 17:26:51,260 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Translation-fr
+2014-02-05 17:26:51,260 [golem][DEBUG ] Hit http://security.debian.org wheezy/updates/main amd64 Packages
+2014-02-05 17:26:51,260 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates/main Sources
+2014-02-05 17:26:51,261 [golem][DEBUG ] Hit http://security.debian.org wheezy/updates/main Translation-en
+2014-02-05 17:26:51,261 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates/main amd64 Packages/DiffIndex
+2014-02-05 17:26:51,261 [golem][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates/main Translation-en/DiffIndex
+2014-02-05 17:26:51,261 [golem][DEBUG ] Hit http://ceph.com wheezy Release.gpg
+2014-02-05 17:26:51,261 [golem][DEBUG ] Hit http://ceph.com wheezy Release
+2014-02-05 17:26:51,262 [golem][DEBUG ] Hit http://ceph.com wheezy/main amd64 Packages
+2014-02-05 17:26:51,262 [golem][DEBUG ] Ign http://ceph.com wheezy/main Translation-en
+2014-02-05 17:26:51,262 [golem][DEBUG ] Ign http://ceph.com wheezy/main Translation-fr
+2014-02-05 17:26:51,262 [golem][DEBUG ] Reading package lists...
+2014-02-05 17:26:51,262 [golem][INFO  ] Running command: sudo env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -q -o Dpkg::Options::=--force-confnew --no-install-recommends --assume-yes install -- ceph ceph-mds ceph-common ceph-fs-common gdisk
+2014-02-05 17:26:51,885 [golem][DEBUG ] Reading package lists...
+2014-02-05 17:26:51,886 [golem][DEBUG ] Building dependency tree...
+2014-02-05 17:26:51,886 [golem][DEBUG ] Reading state information...
+2014-02-05 17:26:51,886 [golem][DEBUG ] gdisk is already the newest version.
+2014-02-05 17:26:51,886 [golem][DEBUG ] ceph is already the newest version.
+2014-02-05 17:26:51,886 [golem][DEBUG ] ceph-common is already the newest version.
+2014-02-05 17:26:51,887 [golem][DEBUG ] ceph-fs-common is already the newest version.
+2014-02-05 17:26:51,887 [golem][DEBUG ] ceph-mds is already the newest version.
+2014-02-05 17:26:51,887 [golem][DEBUG ] 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+2014-02-05 17:26:51,887 [golem][INFO  ] Running command: sudo ceph --version
+2014-02-05 17:26:52,058 [golem][DEBUG ] ceph version 0.72.2 (a913ded2ff138aefb8cb84d347d72164099cfd60)
+2014-02-05 17:26:52,058 [ceph_deploy.install][DEBUG ] Detecting platform for host rondoudou ...
+2014-02-05 17:26:52,294 [rondoudou][DEBUG ] connected to host: rondoudou 
+2014-02-05 17:26:52,295 [rondoudou][DEBUG ] detect platform information from remote host
+2014-02-05 17:26:52,325 [rondoudou][DEBUG ] detect machine type
+2014-02-05 17:26:52,329 [ceph_deploy.install][INFO  ] Distro info: debian 7.3 wheezy
+2014-02-05 17:26:52,330 [rondoudou][INFO  ] installing ceph on rondoudou
+2014-02-05 17:26:52,330 [rondoudou][INFO  ] Running command: sudo env DEBIAN_FRONTEND=noninteractive apt-get -q install --assume-yes ca-certificates
+2014-02-05 17:26:53,002 [rondoudou][DEBUG ] Reading package lists...
+2014-02-05 17:26:53,003 [rondoudou][DEBUG ] Building dependency tree...
+2014-02-05 17:26:53,003 [rondoudou][DEBUG ] Reading state information...
+2014-02-05 17:26:53,003 [rondoudou][DEBUG ] ca-certificates is already the newest version.
+2014-02-05 17:26:53,004 [rondoudou][DEBUG ] 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+2014-02-05 17:26:53,004 [rondoudou][INFO  ] Running command: sudo apt-get -q update
+2014-02-05 17:26:59,332 [rondoudou][WARNING] W: GPG error: http://ceph.com wheezy Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 7EBFDD5D17ED316D
+2014-02-05 17:26:59,332 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy Release.gpg
+2014-02-05 17:26:59,333 [rondoudou][DEBUG ] Hit http://security.debian.org wheezy/updates Release.gpg
+2014-02-05 17:26:59,333 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates Release.gpg
+2014-02-05 17:26:59,334 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy Release
+2014-02-05 17:26:59,334 [rondoudou][DEBUG ] Hit http://security.debian.org wheezy/updates Release
+2014-02-05 17:26:59,334 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates Release
+2014-02-05 17:26:59,335 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Sources
+2014-02-05 17:26:59,335 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main i386 Packages
+2014-02-05 17:26:59,336 [rondoudou][DEBUG ] Hit http://security.debian.org wheezy/updates/main Sources
+2014-02-05 17:26:59,336 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Translation-en
+2014-02-05 17:26:59,336 [rondoudou][DEBUG ] Hit http://security.debian.org wheezy/updates/main i386 Packages
+2014-02-05 17:26:59,337 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Translation-fr
+2014-02-05 17:26:59,337 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates/main Sources
+2014-02-05 17:26:59,338 [rondoudou][DEBUG ] Hit http://security.debian.org wheezy/updates/main Translation-en
+2014-02-05 17:26:59,338 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates/main i386 Packages/DiffIndex
+2014-02-05 17:26:59,338 [rondoudou][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates/main Translation-en/DiffIndex
+2014-02-05 17:26:59,339 [rondoudou][DEBUG ] Get:1 http://ceph.com wheezy Release.gpg [836 B]
+2014-02-05 17:26:59,339 [rondoudou][DEBUG ] Hit http://ceph.com wheezy Release
+2014-02-05 17:26:59,339 [rondoudou][DEBUG ] Ign http://ceph.com wheezy Release
+2014-02-05 17:26:59,340 [rondoudou][DEBUG ] Ign http://ceph.com wheezy/main i386 Packages/DiffIndex
+2014-02-05 17:26:59,340 [rondoudou][DEBUG ] Hit http://ceph.com wheezy/main i386 Packages
+2014-02-05 17:26:59,340 [rondoudou][DEBUG ] Ign http://ceph.com wheezy/main Translation-en
+2014-02-05 17:26:59,341 [rondoudou][DEBUG ] Ign http://ceph.com wheezy/main Translation-fr
+2014-02-05 17:26:59,341 [rondoudou][DEBUG ] Fetched 836 B in 2s (354 B/s)
+2014-02-05 17:26:59,342 [rondoudou][DEBUG ] Reading package lists...
+2014-02-05 17:26:59,342 [rondoudou][INFO  ] Running command: sudo env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -q -o Dpkg::Options::=--force-confnew --no-install-recommends --assume-yes install -- ceph ceph-mds ceph-common ceph-fs-common gdisk
+2014-02-05 17:27:00,063 [rondoudou][DEBUG ] Reading package lists...
+2014-02-05 17:27:00,064 [rondoudou][DEBUG ] Building dependency tree...
+2014-02-05 17:27:00,064 [rondoudou][DEBUG ] Reading state information...
+2014-02-05 17:27:00,064 [rondoudou][DEBUG ] gdisk is already the newest version.
+2014-02-05 17:27:00,065 [rondoudou][DEBUG ] ceph is already the newest version.
+2014-02-05 17:27:00,065 [rondoudou][DEBUG ] ceph-common is already the newest version.
+2014-02-05 17:27:00,066 [rondoudou][DEBUG ] ceph-common set to manually installed.
+2014-02-05 17:27:00,066 [rondoudou][DEBUG ] ceph-fs-common is already the newest version.
+2014-02-05 17:27:00,066 [rondoudou][DEBUG ] ceph-fs-common set to manually installed.
+2014-02-05 17:27:00,067 [rondoudou][DEBUG ] ceph-mds is already the newest version.
+2014-02-05 17:27:00,067 [rondoudou][DEBUG ] ceph-mds set to manually installed.
+2014-02-05 17:27:00,068 [rondoudou][DEBUG ] 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+2014-02-05 17:27:00,068 [rondoudou][INFO  ] Running command: sudo ceph --version
+2014-02-05 17:27:00,438 [rondoudou][DEBUG ] ceph version 0.72.2 (a913ded2ff138aefb8cb84d347d72164099cfd60)
+2014-02-05 17:27:00,439 [ceph_deploy.install][DEBUG ] Detecting platform for host carapuce ...
+2014-02-05 17:27:00,699 [carapuce][DEBUG ] connected to host: carapuce 
+2014-02-05 17:27:00,701 [carapuce][DEBUG ] detect platform information from remote host
+2014-02-05 17:27:00,716 [carapuce][DEBUG ] detect machine type
+2014-02-05 17:27:00,719 [ceph_deploy.install][INFO  ] Distro info: debian 7.3 wheezy
+2014-02-05 17:27:00,720 [carapuce][INFO  ] installing ceph on carapuce
+2014-02-05 17:27:00,720 [carapuce][INFO  ] Running command: sudo env DEBIAN_FRONTEND=noninteractive apt-get -q install --assume-yes ca-certificates
+2014-02-05 17:27:01,091 [carapuce][DEBUG ] Reading package lists...
+2014-02-05 17:27:01,092 [carapuce][DEBUG ] Building dependency tree...
+2014-02-05 17:27:01,092 [carapuce][DEBUG ] Reading state information...
+2014-02-05 17:27:01,092 [carapuce][DEBUG ] ca-certificates is already the newest version.
+2014-02-05 17:27:01,093 [carapuce][DEBUG ] 0 upgraded, 0 newly installed, 0 to remove and 8 not upgraded.
+2014-02-05 17:27:01,093 [carapuce][INFO  ] Running command: sudo apt-get -q update
+2014-02-05 17:27:08,472 [carapuce][WARNING] W: GPG error: http://packages.linuxmint.com debian Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 3EE67F3D0FF405B2
+2014-02-05 17:27:08,473 [carapuce][WARNING] W: GPG error: http://ceph.com wheezy Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 7EBFDD5D17ED316D
+2014-02-05 17:27:08,473 [carapuce][DEBUG ] Hit http://ftp.fr.debian.org wheezy Release.gpg
+2014-02-05 17:27:08,474 [carapuce][DEBUG ] Hit http://security.debian.org wheezy/updates Release.gpg
+2014-02-05 17:27:08,474 [carapuce][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates Release.gpg
+2014-02-05 17:27:08,475 [carapuce][DEBUG ] Hit http://ftp.fr.debian.org wheezy-backports Release.gpg
+2014-02-05 17:27:08,475 [carapuce][DEBUG ] Hit http://security.debian.org wheezy/updates Release
+2014-02-05 17:27:08,475 [carapuce][DEBUG ] Hit http://ftp.fr.debian.org wheezy Release
+2014-02-05 17:27:08,476 [carapuce][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates Release
+2014-02-05 17:27:08,476 [carapuce][DEBUG ] Hit http://security.debian.org wheezy/updates/main Sources
+2014-02-05 17:27:08,476 [carapuce][DEBUG ] Hit http://ftp.fr.debian.org wheezy-backports Release
+2014-02-05 17:27:08,477 [carapuce][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Sources
+2014-02-05 17:27:08,477 [carapuce][DEBUG ] Hit http://security.debian.org wheezy/updates/main amd64 Packages
+2014-02-05 17:27:08,478 [carapuce][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main amd64 Packages
+2014-02-05 17:27:08,478 [carapuce][DEBUG ] Hit http://security.debian.org wheezy/updates/main Translation-en
+2014-02-05 17:27:08,478 [carapuce][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Translation-en
+2014-02-05 17:27:08,479 [carapuce][DEBUG ] Hit http://ftp.fr.debian.org wheezy/main Translation-fr
+2014-02-05 17:27:08,479 [carapuce][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates/main Sources
+2014-02-05 17:27:08,479 [carapuce][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates/main amd64 Packages/DiffIndex
+2014-02-05 17:27:08,480 [carapuce][DEBUG ] Hit http://ftp.fr.debian.org wheezy-updates/main Translation-en/DiffIndex
+2014-02-05 17:27:08,480 [carapuce][DEBUG ] Hit http://ftp.fr.debian.org wheezy-backports/main amd64 Packages/DiffIndex
+2014-02-05 17:27:08,481 [carapuce][DEBUG ] Hit http://ftp.fr.debian.org wheezy-backports/main Translation-en/DiffIndex
+2014-02-05 17:27:08,481 [carapuce][DEBUG ] Get:1 http://packages.linuxmint.com debian Release.gpg [198 B]
+2014-02-05 17:27:08,481 [carapuce][DEBUG ] Get:2 http://ceph.com wheezy Release.gpg [836 B]
+2014-02-05 17:27:08,482 [carapuce][DEBUG ] Get:3 http://packages.linuxmint.com debian Release [15.6 kB]
+2014-02-05 17:27:08,482 [carapuce][DEBUG ] Ign http://packages.linuxmint.com debian Release
+2014-02-05 17:27:08,482 [carapuce][DEBUG ] Hit http://ceph.com wheezy Release
+2014-02-05 17:27:08,483 [carapuce][DEBUG ] Ign http://ceph.com wheezy Release
+2014-02-05 17:27:08,483 [carapuce][DEBUG ] Ign http://packages.linuxmint.com debian/main amd64 Packages/DiffIndex
+2014-02-05 17:27:08,483 [carapuce][DEBUG ] Ign http://ceph.com wheezy/main amd64 Packages/DiffIndex
+2014-02-05 17:27:08,484 [carapuce][DEBUG ] Ign http://packages.linuxmint.com debian/import amd64 Packages/DiffIndex
+2014-02-05 17:27:08,484 [carapuce][DEBUG ] Hit http://ceph.com wheezy/main amd64 Packages
+2014-02-05 17:27:08,485 [carapuce][DEBUG ] Ign http://ceph.com wheezy/main Translation-en
+2014-02-05 17:27:08,485 [carapuce][DEBUG ] Ign http://ceph.com wheezy/main Translation-fr
+2014-02-05 17:27:08,485 [carapuce][DEBUG ] Get:4 http://packages.linuxmint.com debian/main amd64 Packages [26.0 kB]
+2014-02-05 17:27:08,486 [carapuce][DEBUG ] Get:5 http://packages.linuxmint.com debian/import amd64 Packages [57.3 kB]
+2014-02-05 17:27:08,486 [carapuce][DEBUG ] Ign http://packages.linuxmint.com debian/import Translation-en
+2014-02-05 17:27:08,486 [carapuce][DEBUG ] Ign http://packages.linuxmint.com debian/import Translation-fr
+2014-02-05 17:27:08,487 [carapuce][DEBUG ] Ign http://packages.linuxmint.com debian/main Translation-en
+2014-02-05 17:27:08,487 [carapuce][DEBUG ] Ign http://packages.linuxmint.com debian/main Translation-fr
+2014-02-05 17:27:08,487 [carapuce][DEBUG ] Fetched 99.9 kB in 5s (18.5 kB/s)
+2014-02-05 17:27:08,488 [carapuce][DEBUG ] Reading package lists...
+2014-02-05 17:27:08,488 [carapuce][INFO  ] Running command: sudo env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -q -o Dpkg::Options::=--force-confnew --no-install-recommends --assume-yes install -- ceph ceph-mds ceph-common ceph-fs-common gdisk
+2014-02-05 17:27:08,859 [carapuce][DEBUG ] Reading package lists...
+2014-02-05 17:27:08,859 [carapuce][DEBUG ] Building dependency tree...
+2014-02-05 17:27:08,860 [carapuce][DEBUG ] Reading state information...
+2014-02-05 17:27:08,860 [carapuce][DEBUG ] gdisk is already the newest version.
+2014-02-05 17:27:08,861 [carapuce][DEBUG ] ceph is already the newest version.
+2014-02-05 17:27:08,861 [carapuce][DEBUG ] ceph-common is already the newest version.
+2014-02-05 17:27:08,861 [carapuce][DEBUG ] ceph-common set to manually installed.
+2014-02-05 17:27:08,862 [carapuce][DEBUG ] ceph-fs-common is already the newest version.
+2014-02-05 17:27:08,862 [carapuce][DEBUG ] ceph-fs-common set to manually installed.
+2014-02-05 17:27:08,863 [carapuce][DEBUG ] ceph-mds is already the newest version.
+2014-02-05 17:27:08,863 [carapuce][DEBUG ] ceph-mds set to manually installed.
+2014-02-05 17:27:08,863 [carapuce][DEBUG ] 0 upgraded, 0 newly installed, 0 to remove and 8 not upgraded.
+2014-02-05 17:27:08,864 [carapuce][INFO  ] Running command: sudo ceph --version
+2014-02-05 17:27:09,084 [carapuce][DEBUG ] ceph version 0.72.2 (a913ded2ff138aefb8cb84d347d72164099cfd60)
+2014-02-05 17:50:15,281 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy mon create-initial
+2014-02-05 17:50:15,283 [ceph_deploy.mon][DEBUG ] Deploying mon, cluster ceph hosts golem
+2014-02-05 17:50:15,284 [ceph_deploy.mon][DEBUG ] detecting platform for host golem ...
+2014-02-05 17:50:15,384 [golem][DEBUG ] connected to host: golem 
+2014-02-05 17:50:15,385 [golem][DEBUG ] detect platform information from remote host
+2014-02-05 17:50:15,415 [golem][DEBUG ] detect machine type
+2014-02-05 17:50:15,420 [ceph_deploy.mon][INFO  ] distro info: debian 7.3 wheezy
+2014-02-05 17:50:15,420 [golem][DEBUG ] determining if provided host has same hostname in remote
+2014-02-05 17:50:15,421 [golem][DEBUG ] get remote short hostname
+2014-02-05 17:50:15,422 [golem][DEBUG ] deploying mon to golem
+2014-02-05 17:50:15,422 [golem][DEBUG ] get remote short hostname
+2014-02-05 17:50:15,423 [golem][DEBUG ] remote hostname: golem
+2014-02-05 17:50:15,424 [golem][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+2014-02-05 17:50:15,426 [golem][DEBUG ] create the mon path if it does not exist
+2014-02-05 17:50:15,427 [golem][DEBUG ] checking for done path: /var/lib/ceph/mon/ceph-golem/done
+2014-02-05 17:50:15,428 [golem][DEBUG ] done path does not exist: /var/lib/ceph/mon/ceph-golem/done
+2014-02-05 17:50:15,429 [golem][INFO  ] creating keyring file: /var/lib/ceph/tmp/ceph-golem.mon.keyring
+2014-02-05 17:50:15,429 [golem][DEBUG ] create the monitor keyring file
+2014-02-05 17:50:15,430 [golem][INFO  ] Running command: sudo ceph-mon --cluster ceph --mkfs -i golem --keyring /var/lib/ceph/tmp/ceph-golem.mon.keyring
+2014-02-05 17:50:16,008 [golem][DEBUG ] ceph-mon: mon.noname-a 192.168.1.51:6789/0 is local, renaming to mon.golem
+2014-02-05 17:50:16,009 [golem][DEBUG ] ceph-mon: set fsid to d4a63950-a12f-4e4d-983b-57583bf09bac
+2014-02-05 17:50:16,009 [golem][DEBUG ] ceph-mon: created monfs at /var/lib/ceph/mon/ceph-golem for mon.golem
+2014-02-05 17:50:16,009 [golem][INFO  ] unlinking keyring file /var/lib/ceph/tmp/ceph-golem.mon.keyring
+2014-02-05 17:50:16,011 [golem][DEBUG ] create a done file to avoid re-doing the mon deployment
+2014-02-05 17:50:16,012 [golem][DEBUG ] create the init path if it does not exist
+2014-02-05 17:50:16,013 [golem][DEBUG ] locating the `service` executable...
+2014-02-05 17:50:16,014 [golem][INFO  ] Running command: sudo /usr/sbin/service ceph -c /etc/ceph/ceph.conf start mon.golem
+2014-02-05 17:50:16,586 [golem][DEBUG ] === mon.golem === 
+2014-02-05 17:50:16,587 [golem][DEBUG ] Starting Ceph mon.golem on golem...
+2014-02-05 17:50:16,587 [golem][DEBUG ] Starting ceph-create-keys on golem...
+2014-02-05 17:50:21,607 [golem][INFO  ] Running command: sudo ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.golem.asok mon_status
+2014-02-05 17:50:21,776 [golem][DEBUG ] ********************************************************************************
+2014-02-05 17:50:21,776 [golem][DEBUG ] status for monitor: mon.golem
+2014-02-05 17:50:21,777 [golem][DEBUG ] {
+2014-02-05 17:50:21,777 [golem][DEBUG ]   "election_epoch": 2, 
+2014-02-05 17:50:21,777 [golem][DEBUG ]   "extra_probe_peers": [], 
+2014-02-05 17:50:21,778 [golem][DEBUG ]   "monmap": {
+2014-02-05 17:50:21,778 [golem][DEBUG ]     "created": "0.000000", 
+2014-02-05 17:50:21,778 [golem][DEBUG ]     "epoch": 1, 
+2014-02-05 17:50:21,778 [golem][DEBUG ]     "fsid": "d4a63950-a12f-4e4d-983b-57583bf09bac", 
+2014-02-05 17:50:21,778 [golem][DEBUG ]     "modified": "0.000000", 
+2014-02-05 17:50:21,778 [golem][DEBUG ]     "mons": [
+2014-02-05 17:50:21,779 [golem][DEBUG ]       {
+2014-02-05 17:50:21,779 [golem][DEBUG ]         "addr": "192.168.1.51:6789/0", 
+2014-02-05 17:50:21,779 [golem][DEBUG ]         "name": "golem", 
+2014-02-05 17:50:21,779 [golem][DEBUG ]         "rank": 0
+2014-02-05 17:50:21,779 [golem][DEBUG ]       }
+2014-02-05 17:50:21,779 [golem][DEBUG ]     ]
+2014-02-05 17:50:21,780 [golem][DEBUG ]   }, 
+2014-02-05 17:50:21,780 [golem][DEBUG ]   "name": "golem", 
+2014-02-05 17:50:21,780 [golem][DEBUG ]   "outside_quorum": [], 
+2014-02-05 17:50:21,780 [golem][DEBUG ]   "quorum": [
+2014-02-05 17:50:21,780 [golem][DEBUG ]     0
+2014-02-05 17:50:21,781 [golem][DEBUG ]   ], 
+2014-02-05 17:50:21,781 [golem][DEBUG ]   "rank": 0, 
+2014-02-05 17:50:21,781 [golem][DEBUG ]   "state": "leader", 
+2014-02-05 17:50:21,781 [golem][DEBUG ]   "sync_provider": []
+2014-02-05 17:50:21,781 [golem][DEBUG ] }
+2014-02-05 17:50:21,781 [golem][DEBUG ] ********************************************************************************
+2014-02-05 17:50:21,782 [golem][INFO  ] monitor: mon.golem is running
+2014-02-05 17:50:21,782 [golem][INFO  ] Running command: sudo ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.golem.asok mon_status
+2014-02-05 17:50:21,957 [ceph_deploy.mon][INFO  ] processing monitor mon.golem
+2014-02-05 17:50:22,014 [golem][DEBUG ] connected to host: golem 
+2014-02-05 17:50:22,015 [golem][INFO  ] Running command: sudo ceph --cluster=ceph --admin-daemon /var/run/ceph/ceph-mon.golem.asok mon_status
+2014-02-05 17:50:22,182 [ceph_deploy.mon][INFO  ] mon.golem monitor has reached quorum!
+2014-02-05 17:50:22,182 [ceph_deploy.mon][INFO  ] all initial monitors are running and have formed quorum
+2014-02-05 17:50:22,183 [ceph_deploy.mon][INFO  ] Running gatherkeys...
+2014-02-05 17:50:22,183 [ceph_deploy.gatherkeys][DEBUG ] Checking golem for /etc/ceph/ceph.client.admin.keyring
+2014-02-05 17:50:22,240 [golem][DEBUG ] connected to host: golem 
+2014-02-05 17:50:22,242 [golem][DEBUG ] detect platform information from remote host
+2014-02-05 17:50:22,271 [golem][DEBUG ] detect machine type
+2014-02-05 17:50:22,276 [golem][DEBUG ] fetch remote file
+2014-02-05 17:50:22,278 [ceph_deploy.gatherkeys][DEBUG ] Got ceph.client.admin.keyring key from golem.
+2014-02-05 17:50:22,278 [ceph_deploy.gatherkeys][DEBUG ] Have ceph.mon.keyring
+2014-02-05 17:50:22,278 [ceph_deploy.gatherkeys][DEBUG ] Checking golem for /var/lib/ceph/bootstrap-osd/ceph.keyring
+2014-02-05 17:50:22,334 [golem][DEBUG ] connected to host: golem 
+2014-02-05 17:50:22,335 [golem][DEBUG ] detect platform information from remote host
+2014-02-05 17:50:22,365 [golem][DEBUG ] detect machine type
+2014-02-05 17:50:22,370 [golem][DEBUG ] fetch remote file
+2014-02-05 17:50:22,372 [ceph_deploy.gatherkeys][DEBUG ] Got ceph.bootstrap-osd.keyring key from golem.
+2014-02-05 17:50:22,372 [ceph_deploy.gatherkeys][DEBUG ] Checking golem for /var/lib/ceph/bootstrap-mds/ceph.keyring
+2014-02-05 17:50:22,427 [golem][DEBUG ] connected to host: golem 
+2014-02-05 17:50:22,428 [golem][DEBUG ] detect platform information from remote host
+2014-02-05 17:50:22,458 [golem][DEBUG ] detect machine type
+2014-02-05 17:50:22,463 [golem][DEBUG ] fetch remote file
+2014-02-05 17:50:22,465 [ceph_deploy.gatherkeys][DEBUG ] Got ceph.bootstrap-mds.keyring key from golem.
+2014-02-05 17:59:35,283 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy mon create-initial
+2014-02-05 17:59:35,285 [ceph_deploy][ERROR ] RuntimeError: No `mon initial members` defined in config
+
+2014-02-06 15:06:58,245 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy disk list golem
+2014-02-06 15:06:58,520 [golem][DEBUG ] connected to host: golem 
+2014-02-06 15:06:58,521 [golem][DEBUG ] detect platform information from remote host
+2014-02-06 15:06:58,552 [golem][DEBUG ] detect machine type
+2014-02-06 15:06:58,556 [ceph_deploy.osd][INFO  ] Distro info: debian 7.3 wheezy
+2014-02-06 15:06:58,557 [ceph_deploy.osd][DEBUG ] Listing disks on golem...
+2014-02-06 15:06:58,557 [golem][INFO  ] Running command: sudo ceph-disk list
+2014-02-06 15:06:59,235 [golem][DEBUG ] /dev/sda :
+2014-02-06 15:06:59,235 [golem][DEBUG ]  /dev/sda1 other, ext4, mounted on /
+2014-02-06 15:06:59,236 [golem][DEBUG ]  /dev/sda2 other
+2014-02-06 15:06:59,236 [golem][DEBUG ]  /dev/sda3 other, xfs
+2014-02-06 15:06:59,236 [golem][DEBUG ]  /dev/sda5 swap, swap
+2014-02-06 15:06:59,236 [golem][DEBUG ] /dev/sr0 other, unknown
+2014-02-06 15:07:22,495 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy disk zap golem:sda3
+2014-02-06 15:07:22,496 [ceph_deploy.osd][DEBUG ] zapping /dev/sda3 on golem
+2014-02-06 15:07:22,596 [golem][DEBUG ] connected to host: golem 
+2014-02-06 15:07:22,597 [golem][DEBUG ] detect platform information from remote host
+2014-02-06 15:07:22,627 [golem][DEBUG ] detect machine type
+2014-02-06 15:07:22,632 [ceph_deploy.osd][INFO  ] Distro info: debian 7.3 wheezy
+2014-02-06 15:07:22,632 [golem][DEBUG ] zeroing last few blocks of device
+2014-02-06 15:07:22,634 [golem][INFO  ] Running command: sudo sgdisk --zap-all --clear --mbrtogpt -- /dev/sda3
+2014-02-06 15:07:24,964 [golem][DEBUG ] Creating new GPT entries.
+2014-02-06 15:07:24,964 [golem][DEBUG ] Warning: The kernel is still using the old partition table.
+2014-02-06 15:07:24,964 [golem][DEBUG ] The new table will be used at the next reboot.
+2014-02-06 15:07:24,964 [golem][DEBUG ] GPT data structures destroyed! You may now partition the disk using fdisk or
+2014-02-06 15:07:24,965 [golem][DEBUG ] other utilities.
+2014-02-06 15:07:24,965 [golem][DEBUG ] Warning: The kernel is still using the old partition table.
+2014-02-06 15:07:24,965 [golem][DEBUG ] The new table will be used at the next reboot.
+2014-02-06 15:07:24,965 [golem][DEBUG ] The operation has completed successfully.
+2014-02-06 15:08:44,578 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy osd create golem:sda3
+2014-02-06 15:08:44,580 [ceph_deploy.osd][DEBUG ] Preparing cluster ceph disks golem:/dev/sda3:
+2014-02-06 15:08:44,690 [golem][DEBUG ] connected to host: golem 
+2014-02-06 15:08:44,691 [golem][DEBUG ] detect platform information from remote host
+2014-02-06 15:08:44,721 [golem][DEBUG ] detect machine type
+2014-02-06 15:08:44,725 [ceph_deploy.osd][INFO  ] Distro info: debian 7.3 wheezy
+2014-02-06 15:08:44,726 [ceph_deploy.osd][DEBUG ] Deploying osd to golem
+2014-02-06 15:08:44,726 [golem][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+2014-02-06 15:08:44,729 [ceph_deploy.osd][ERROR ] RuntimeError: config file /etc/ceph/ceph.conf exists with different content; use --overwrite-conf to overwrite
+2014-02-06 15:08:44,730 [ceph_deploy][ERROR ] GenericError: Failed to create 1 OSDs
+
+2014-02-06 15:09:05,581 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy --overwrite-conf osd create golem:sda3
+2014-02-06 15:09:05,583 [ceph_deploy.osd][DEBUG ] Preparing cluster ceph disks golem:/dev/sda3:
+2014-02-06 15:09:05,682 [golem][DEBUG ] connected to host: golem 
+2014-02-06 15:09:05,683 [golem][DEBUG ] detect platform information from remote host
+2014-02-06 15:09:05,713 [golem][DEBUG ] detect machine type
+2014-02-06 15:09:05,718 [ceph_deploy.osd][INFO  ] Distro info: debian 7.3 wheezy
+2014-02-06 15:09:05,718 [ceph_deploy.osd][DEBUG ] Deploying osd to golem
+2014-02-06 15:09:05,718 [golem][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+2014-02-06 15:09:05,722 [golem][INFO  ] Running command: sudo udevadm trigger --subsystem-match=block --action=add
+2014-02-06 15:09:05,752 [ceph_deploy.osd][DEBUG ] Preparing host golem disk /dev/sda3 journal None activate True
+2014-02-06 15:09:05,752 [golem][INFO  ] Running command: sudo ceph-disk-prepare --fs-type xfs --cluster ceph -- /dev/sda3
+2014-02-06 15:09:06,826 [golem][DEBUG ] meta-data=/dev/sda3              isize=2048   agcount=4, agsize=640000 blks
+2014-02-06 15:09:06,826 [golem][DEBUG ]          =                       sectsz=512   attr=2, projid32bit=0
+2014-02-06 15:09:06,827 [golem][DEBUG ] data     =                       bsize=4096   blocks=2560000, imaxpct=25
+2014-02-06 15:09:06,827 [golem][DEBUG ]          =                       sunit=0      swidth=0 blks
+2014-02-06 15:09:06,827 [golem][DEBUG ] naming   =version 2              bsize=4096   ascii-ci=0
+2014-02-06 15:09:06,827 [golem][DEBUG ] log      =internal log           bsize=4096   blocks=2560, version=2
+2014-02-06 15:09:06,828 [golem][DEBUG ]          =                       sectsz=512   sunit=0 blks, lazy-count=1
+2014-02-06 15:09:06,828 [golem][DEBUG ] realtime =none                   extsz=4096   blocks=0, rtextents=0
+2014-02-06 15:09:06,828 [golem][INFO  ] Running command: sudo udevadm trigger --subsystem-match=block --action=add
+2014-02-06 15:09:06,902 [ceph_deploy.osd][DEBUG ] Host golem is now ready for osd use.
+2014-02-06 15:32:59,632 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy --overwrite-conf osd prepare golem:sda3
+2014-02-06 15:32:59,633 [ceph_deploy.osd][DEBUG ] Preparing cluster ceph disks golem:/dev/sda3:
+2014-02-06 15:32:59,736 [golem][DEBUG ] connected to host: golem 
+2014-02-06 15:32:59,737 [golem][DEBUG ] detect platform information from remote host
+2014-02-06 15:32:59,767 [golem][DEBUG ] detect machine type
+2014-02-06 15:32:59,772 [ceph_deploy.osd][INFO  ] Distro info: debian 7.3 wheezy
+2014-02-06 15:32:59,772 [ceph_deploy.osd][DEBUG ] Deploying osd to golem
+2014-02-06 15:32:59,772 [golem][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+2014-02-06 15:32:59,776 [golem][INFO  ] Running command: sudo udevadm trigger --subsystem-match=block --action=add
+2014-02-06 15:32:59,821 [ceph_deploy.osd][DEBUG ] Preparing host golem disk /dev/sda3 journal None activate False
+2014-02-06 15:32:59,821 [golem][INFO  ] Running command: sudo ceph-disk-prepare --fs-type xfs --cluster ceph -- /dev/sda3
+2014-02-06 15:33:00,948 [golem][DEBUG ] meta-data=/dev/sda3              isize=2048   agcount=4, agsize=640000 blks
+2014-02-06 15:33:00,949 [golem][DEBUG ]          =                       sectsz=512   attr=2, projid32bit=0
+2014-02-06 15:33:00,949 [golem][DEBUG ] data     =                       bsize=4096   blocks=2560000, imaxpct=25
+2014-02-06 15:33:00,949 [golem][DEBUG ]          =                       sunit=0      swidth=0 blks
+2014-02-06 15:33:00,949 [golem][DEBUG ] naming   =version 2              bsize=4096   ascii-ci=0
+2014-02-06 15:33:00,950 [golem][DEBUG ] log      =internal log           bsize=4096   blocks=2560, version=2
+2014-02-06 15:33:00,950 [golem][DEBUG ]          =                       sectsz=512   sunit=0 blks, lazy-count=1
+2014-02-06 15:33:00,950 [golem][DEBUG ] realtime =none                   extsz=4096   blocks=0, rtextents=0
+2014-02-06 15:33:00,950 [ceph_deploy.osd][DEBUG ] Host golem is now ready for osd use.
+2014-02-06 15:33:14,763 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy osd activate golem:sda3
+2014-02-06 15:33:14,765 [ceph_deploy.osd][DEBUG ] Activating cluster ceph disks golem:/dev/sda3:
+2014-02-06 15:33:14,865 [golem][DEBUG ] connected to host: golem 
+2014-02-06 15:33:14,866 [golem][DEBUG ] detect platform information from remote host
+2014-02-06 15:33:14,896 [golem][DEBUG ] detect machine type
+2014-02-06 15:33:14,901 [ceph_deploy.osd][INFO  ] Distro info: debian 7.3 wheezy
+2014-02-06 15:33:14,902 [ceph_deploy.osd][DEBUG ] activating host golem disk /dev/sda3
+2014-02-06 15:33:14,902 [ceph_deploy.osd][DEBUG ] will use init type: sysvinit
+2014-02-06 15:33:14,902 [golem][INFO  ] Running command: sudo ceph-disk-activate --mark-init sysvinit --mount /dev/sda3
+2014-02-06 15:33:16,232 [golem][WARNING] got latest monmap
+2014-02-06 15:33:16,546 [golem][WARNING] 2014-02-06 15:33:16.505833 7fef4eb13780 -1 journal FileJournal::_open: disabling aio for non-block journal.  Use journal_force_aio to force use of aio anyway
+2014-02-06 15:33:16,860 [golem][WARNING] 2014-02-06 15:33:16.831265 7fef4eb13780 -1 journal FileJournal::_open: disabling aio for non-block journal.  Use journal_force_aio to force use of aio anyway
+2014-02-06 15:33:16,861 [golem][WARNING] 2014-02-06 15:33:16.832829 7fef4eb13780 -1 filestore(/var/lib/ceph/tmp/mnt.SGQ7xV) could not find 23c2fcde/osd_superblock/0//-1 in index: (2) No such file or directory
+2014-02-06 15:33:17,175 [golem][WARNING] 2014-02-06 15:33:17.158060 7fef4eb13780 -1 created object store /var/lib/ceph/tmp/mnt.SGQ7xV journal /var/lib/ceph/tmp/mnt.SGQ7xV/journal for osd.0 fsid d4a63950-a12f-4e4d-983b-57583bf09bac
+2014-02-06 15:33:17,175 [golem][WARNING] 2014-02-06 15:33:17.158970 7fef4eb13780 -1 auth: error reading file: /var/lib/ceph/tmp/mnt.SGQ7xV/keyring: can't open /var/lib/ceph/tmp/mnt.SGQ7xV/keyring: (2) No such file or directory
+2014-02-06 15:33:17,175 [golem][WARNING] 2014-02-06 15:33:17.159793 7fef4eb13780 -1 created new key in keyring /var/lib/ceph/tmp/mnt.SGQ7xV/keyring
+2014-02-06 15:33:17,690 [golem][WARNING] added key for osd.0
+2014-02-06 15:33:18,806 [golem][WARNING] create-or-move updating item name 'osd.0' weight 0.01 at location {host=golem,root=default} to crush map
+2014-02-06 15:33:18,870 [golem][DEBUG ] === osd.0 === 
+2014-02-06 15:33:18,870 [golem][DEBUG ] Starting Ceph osd.0 on golem...
+2014-02-06 15:33:18,871 [golem][DEBUG ] starting osd.0 at :/0 osd_data /var/lib/ceph/osd/ceph-0 /var/lib/ceph/osd/ceph-0/journal
+2014-02-06 15:43:01,385 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy admin golem rondoudou carapuce
+2014-02-06 15:43:01,406 [ceph_deploy.admin][DEBUG ] Pushing admin keys and conf to golem
+2014-02-06 15:43:01,506 [golem][DEBUG ] connected to host: golem 
+2014-02-06 15:43:01,507 [golem][DEBUG ] detect platform information from remote host
+2014-02-06 15:43:01,537 [golem][DEBUG ] detect machine type
+2014-02-06 15:43:01,542 [golem][DEBUG ] get remote short hostname
+2014-02-06 15:43:01,543 [golem][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+2014-02-06 15:43:01,547 [ceph_deploy.admin][DEBUG ] Pushing admin keys and conf to rondoudou
+2014-02-06 15:43:01,854 [rondoudou][DEBUG ] connected to host: rondoudou 
+2014-02-06 15:43:01,855 [rondoudou][DEBUG ] detect platform information from remote host
+2014-02-06 15:43:01,885 [rondoudou][DEBUG ] detect machine type
+2014-02-06 15:43:01,890 [rondoudou][DEBUG ] get remote short hostname
+2014-02-06 15:43:01,892 [rondoudou][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+2014-02-06 15:43:01,896 [ceph_deploy.admin][DEBUG ] Pushing admin keys and conf to carapuce
+2014-02-06 15:43:02,387 [carapuce][DEBUG ] connected to host: carapuce 
+2014-02-06 15:43:02,388 [carapuce][DEBUG ] detect platform information from remote host
+2014-02-06 15:43:02,405 [carapuce][DEBUG ] detect machine type
+2014-02-06 15:43:02,408 [carapuce][DEBUG ] get remote short hostname
+2014-02-06 15:43:02,410 [carapuce][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+2014-02-06 15:45:48,194 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy disk list rondoudou
+2014-02-06 15:45:48,472 [rondoudou][DEBUG ] connected to host: rondoudou 
+2014-02-06 15:45:48,473 [rondoudou][DEBUG ] detect platform information from remote host
+2014-02-06 15:45:48,503 [rondoudou][DEBUG ] detect machine type
+2014-02-06 15:45:48,508 [ceph_deploy.osd][INFO  ] Distro info: debian 7.3 wheezy
+2014-02-06 15:45:48,508 [ceph_deploy.osd][DEBUG ] Listing disks on rondoudou...
+2014-02-06 15:45:48,508 [rondoudou][INFO  ] Running command: sudo ceph-disk list
+2014-02-06 15:45:48,935 [rondoudou][DEBUG ] /dev/sda :
+2014-02-06 15:45:48,936 [rondoudou][DEBUG ]  /dev/sda1 other, ext4, mounted on /
+2014-02-06 15:45:48,936 [rondoudou][DEBUG ]  /dev/sda2 other
+2014-02-06 15:45:48,937 [rondoudou][DEBUG ]  /dev/sda3 other, xfs
+2014-02-06 15:45:48,937 [rondoudou][DEBUG ]  /dev/sda5 swap, swap
+2014-02-06 15:45:48,937 [rondoudou][DEBUG ] /dev/sr0 other, unknown
+2014-02-06 15:46:57,493 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy disk zap rondoudou:sda3
+2014-02-06 15:46:57,496 [ceph_deploy.osd][DEBUG ] zapping /dev/sda3 on rondoudou
+2014-02-06 15:46:57,768 [rondoudou][DEBUG ] connected to host: rondoudou 
+2014-02-06 15:46:57,769 [rondoudou][DEBUG ] detect platform information from remote host
+2014-02-06 15:46:57,799 [rondoudou][DEBUG ] detect machine type
+2014-02-06 15:46:57,804 [ceph_deploy.osd][INFO  ] Distro info: debian 7.3 wheezy
+2014-02-06 15:46:57,804 [rondoudou][DEBUG ] zeroing last few blocks of device
+2014-02-06 15:46:57,806 [rondoudou][INFO  ] Running command: sudo sgdisk --zap-all --clear --mbrtogpt -- /dev/sda3
+2014-02-06 15:47:00,085 [rondoudou][DEBUG ] Creating new GPT entries.
+2014-02-06 15:47:00,086 [rondoudou][DEBUG ] Warning: The kernel is still using the old partition table.
+2014-02-06 15:47:00,086 [rondoudou][DEBUG ] The new table will be used at the next reboot.
+2014-02-06 15:47:00,086 [rondoudou][DEBUG ] GPT data structures destroyed! You may now partition the disk using fdisk or
+2014-02-06 15:47:00,087 [rondoudou][DEBUG ] other utilities.
+2014-02-06 15:47:00,087 [rondoudou][DEBUG ] Warning: The kernel is still using the old partition table.
+2014-02-06 15:47:00,088 [rondoudou][DEBUG ] The new table will be used at the next reboot.
+2014-02-06 15:47:00,088 [rondoudou][DEBUG ] The operation has completed successfully.
+2014-02-06 15:47:29,777 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy --overwrite-conf osd prepare rondoudou:sda3
+2014-02-06 15:47:29,779 [ceph_deploy.osd][DEBUG ] Preparing cluster ceph disks rondoudou:/dev/sda3:
+2014-02-06 15:47:30,052 [rondoudou][DEBUG ] connected to host: rondoudou 
+2014-02-06 15:47:30,054 [rondoudou][DEBUG ] detect platform information from remote host
+2014-02-06 15:47:30,083 [rondoudou][DEBUG ] detect machine type
+2014-02-06 15:47:30,087 [ceph_deploy.osd][INFO  ] Distro info: debian 7.3 wheezy
+2014-02-06 15:47:30,088 [ceph_deploy.osd][DEBUG ] Deploying osd to rondoudou
+2014-02-06 15:47:30,088 [rondoudou][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+2014-02-06 15:47:30,117 [rondoudou][WARNING] osd keyring does not exist yet, creating one
+2014-02-06 15:47:30,117 [rondoudou][DEBUG ] create a keyring file
+2014-02-06 15:47:30,119 [rondoudou][INFO  ] Running command: sudo udevadm trigger --subsystem-match=block --action=add
+2014-02-06 15:47:30,147 [ceph_deploy.osd][DEBUG ] Preparing host rondoudou disk /dev/sda3 journal None activate False
+2014-02-06 15:47:30,148 [rondoudou][INFO  ] Running command: sudo ceph-disk-prepare --fs-type xfs --cluster ceph -- /dev/sda3
+2014-02-06 15:47:31,870 [rondoudou][DEBUG ] meta-data=/dev/sda3              isize=2048   agcount=4, agsize=640000 blks
+2014-02-06 15:47:31,871 [rondoudou][DEBUG ]          =                       sectsz=512   attr=2, projid32bit=0
+2014-02-06 15:47:31,871 [rondoudou][DEBUG ] data     =                       bsize=4096   blocks=2560000, imaxpct=25
+2014-02-06 15:47:31,871 [rondoudou][DEBUG ]          =                       sunit=0      swidth=0 blks
+2014-02-06 15:47:31,872 [rondoudou][DEBUG ] naming   =version 2              bsize=4096   ascii-ci=0
+2014-02-06 15:47:31,872 [rondoudou][DEBUG ] log      =internal log           bsize=4096   blocks=2560, version=2
+2014-02-06 15:47:31,872 [rondoudou][DEBUG ]          =                       sectsz=512   sunit=0 blks, lazy-count=1
+2014-02-06 15:47:31,873 [rondoudou][DEBUG ] realtime =none                   extsz=4096   blocks=0, rtextents=0
+2014-02-06 15:47:31,873 [ceph_deploy.osd][DEBUG ] Host rondoudou is now ready for osd use.
+2014-02-06 15:48:00,947 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy osd activate rondoudou:sda3
+2014-02-06 15:48:00,948 [ceph_deploy.osd][DEBUG ] Activating cluster ceph disks rondoudou:/dev/sda3:
+2014-02-06 15:48:01,226 [rondoudou][DEBUG ] connected to host: rondoudou 
+2014-02-06 15:48:01,227 [rondoudou][DEBUG ] detect platform information from remote host
+2014-02-06 15:48:01,257 [rondoudou][DEBUG ] detect machine type
+2014-02-06 15:48:01,262 [ceph_deploy.osd][INFO  ] Distro info: debian 7.3 wheezy
+2014-02-06 15:48:01,262 [ceph_deploy.osd][DEBUG ] activating host rondoudou disk /dev/sda3
+2014-02-06 15:48:01,263 [ceph_deploy.osd][DEBUG ] will use init type: sysvinit
+2014-02-06 15:48:01,263 [rondoudou][INFO  ] Running command: sudo ceph-disk-activate --mark-init sysvinit --mount /dev/sda3
+2014-02-06 15:48:03,142 [rondoudou][WARNING] got latest monmap
+2014-02-06 15:48:03,456 [rondoudou][WARNING] 2014-02-06 15:42:37.320956 b7248710 -1 journal FileJournal::_open: disabling aio for non-block journal.  Use journal_force_aio to force use of aio anyway
+2014-02-06 15:48:03,770 [rondoudou][WARNING] 2014-02-06 15:42:37.671718 b7248710 -1 journal FileJournal::_open: disabling aio for non-block journal.  Use journal_force_aio to force use of aio anyway
+2014-02-06 15:48:03,778 [rondoudou][WARNING] 2014-02-06 15:42:37.692718 b7248710 -1 filestore(/var/lib/ceph/tmp/mnt.eJkjuz) could not find 23c2fcde/osd_superblock/0//-1 in index: (2) No such file or directory
+2014-02-06 15:48:04,093 [rondoudou][WARNING] 2014-02-06 15:42:37.989686 b7248710 -1 created object store /var/lib/ceph/tmp/mnt.eJkjuz journal /var/lib/ceph/tmp/mnt.eJkjuz/journal for osd.1 fsid d4a63950-a12f-4e4d-983b-57583bf09bac
+2014-02-06 15:48:04,093 [rondoudou][WARNING] 2014-02-06 15:42:37.989781 b7248710 -1 auth: error reading file: /var/lib/ceph/tmp/mnt.eJkjuz/keyring: can't open /var/lib/ceph/tmp/mnt.eJkjuz/keyring: (2) No such file or directory
+2014-02-06 15:48:04,093 [rondoudou][WARNING] 2014-02-06 15:42:37.989943 b7248710 -1 created new key in keyring /var/lib/ceph/tmp/mnt.eJkjuz/keyring
+2014-02-06 15:48:04,558 [rondoudou][WARNING] added key for osd.1
+2014-02-06 15:48:05,675 [rondoudou][WARNING] create-or-move updating item name 'osd.1' weight 0.01 at location {host=rondoudou,root=default} to crush map
+2014-02-06 15:48:05,789 [rondoudou][DEBUG ] === osd.1 === 
+2014-02-06 15:48:05,790 [rondoudou][DEBUG ] Starting Ceph osd.1 on rondoudou...
+2014-02-06 15:48:05,790 [rondoudou][DEBUG ] starting osd.1 at :/0 osd_data /var/lib/ceph/osd/ceph-1 /var/lib/ceph/osd/ceph-1/journal
+2014-02-06 15:49:08,652 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy admin golem rondoudou carapuce
+2014-02-06 15:49:08,654 [ceph_deploy.admin][DEBUG ] Pushing admin keys and conf to golem
+2014-02-06 15:49:08,754 [golem][DEBUG ] connected to host: golem 
+2014-02-06 15:49:08,755 [golem][DEBUG ] detect platform information from remote host
+2014-02-06 15:49:08,785 [golem][DEBUG ] detect machine type
+2014-02-06 15:49:08,790 [golem][DEBUG ] get remote short hostname
+2014-02-06 15:49:08,791 [golem][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+2014-02-06 15:49:08,794 [ceph_deploy.admin][DEBUG ] Pushing admin keys and conf to rondoudou
+2014-02-06 15:49:09,027 [rondoudou][DEBUG ] connected to host: rondoudou 
+2014-02-06 15:49:09,028 [rondoudou][DEBUG ] detect platform information from remote host
+2014-02-06 15:49:09,058 [rondoudou][DEBUG ] detect machine type
+2014-02-06 15:49:09,062 [rondoudou][DEBUG ] get remote short hostname
+2014-02-06 15:49:09,064 [rondoudou][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+2014-02-06 15:49:09,068 [ceph_deploy.admin][DEBUG ] Pushing admin keys and conf to carapuce
+2014-02-06 15:49:09,237 [carapuce][DEBUG ] connected to host: carapuce 
+2014-02-06 15:49:09,238 [carapuce][DEBUG ] detect platform information from remote host
+2014-02-06 15:49:09,254 [carapuce][DEBUG ] detect machine type
+2014-02-06 15:49:09,258 [carapuce][DEBUG ] get remote short hostname
+2014-02-06 15:49:09,260 [carapuce][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+2014-02-06 15:51:26,438 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy admin golem rondoudou carapuce
+2014-02-06 15:51:26,440 [ceph_deploy.admin][DEBUG ] Pushing admin keys and conf to golem
+2014-02-06 15:51:26,539 [golem][DEBUG ] connected to host: golem 
+2014-02-06 15:51:26,541 [golem][DEBUG ] detect platform information from remote host
+2014-02-06 15:51:26,570 [golem][DEBUG ] detect machine type
+2014-02-06 15:51:26,575 [golem][DEBUG ] get remote short hostname
+2014-02-06 15:51:26,576 [golem][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+2014-02-06 15:51:26,579 [ceph_deploy.admin][ERROR ] RuntimeError: config file /etc/ceph/ceph.conf exists with different content; use --overwrite-conf to overwrite
+2014-02-06 15:51:26,579 [ceph_deploy.admin][DEBUG ] Pushing admin keys and conf to rondoudou
+2014-02-06 15:51:26,808 [rondoudou][DEBUG ] connected to host: rondoudou 
+2014-02-06 15:51:26,809 [rondoudou][DEBUG ] detect platform information from remote host
+2014-02-06 15:51:26,839 [rondoudou][DEBUG ] detect machine type
+2014-02-06 15:51:26,844 [rondoudou][DEBUG ] get remote short hostname
+2014-02-06 15:51:26,846 [rondoudou][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+2014-02-06 15:51:26,849 [ceph_deploy.admin][ERROR ] RuntimeError: config file /etc/ceph/ceph.conf exists with different content; use --overwrite-conf to overwrite
+2014-02-06 15:51:26,849 [ceph_deploy.admin][DEBUG ] Pushing admin keys and conf to carapuce
+2014-02-06 15:51:27,039 [carapuce][DEBUG ] connected to host: carapuce 
+2014-02-06 15:51:27,040 [carapuce][DEBUG ] detect platform information from remote host
+2014-02-06 15:51:27,056 [carapuce][DEBUG ] detect machine type
+2014-02-06 15:51:27,060 [carapuce][DEBUG ] get remote short hostname
+2014-02-06 15:51:27,062 [carapuce][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+2014-02-06 15:51:27,064 [ceph_deploy.admin][ERROR ] RuntimeError: config file /etc/ceph/ceph.conf exists with different content; use --overwrite-conf to overwrite
+2014-02-06 15:51:27,065 [ceph_deploy][ERROR ] GenericError: Failed to configure 3 admin hosts
+
+2014-02-06 15:51:42,296 [ceph_deploy.cli][INFO  ] Invoked (1.3.4): /usr/bin/ceph-deploy --overwrite-conf admin golem rondoudou carapuce
+2014-02-06 15:51:42,297 [ceph_deploy.admin][DEBUG ] Pushing admin keys and conf to golem
+2014-02-06 15:51:42,397 [golem][DEBUG ] connected to host: golem 
+2014-02-06 15:51:42,399 [golem][DEBUG ] detect platform information from remote host
+2014-02-06 15:51:42,429 [golem][DEBUG ] detect machine type
+2014-02-06 15:51:42,434 [golem][DEBUG ] get remote short hostname
+2014-02-06 15:51:42,435 [golem][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+2014-02-06 15:51:42,439 [ceph_deploy.admin][DEBUG ] Pushing admin keys and conf to rondoudou
+2014-02-06 15:51:42,673 [rondoudou][DEBUG ] connected to host: rondoudou 
+2014-02-06 15:51:42,674 [rondoudou][DEBUG ] detect platform information from remote host
+2014-02-06 15:51:42,704 [rondoudou][DEBUG ] detect machine type
+2014-02-06 15:51:42,709 [rondoudou][DEBUG ] get remote short hostname
+2014-02-06 15:51:42,710 [rondoudou][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
+2014-02-06 15:51:42,714 [ceph_deploy.admin][DEBUG ] Pushing admin keys and conf to carapuce
+2014-02-06 15:51:42,884 [carapuce][DEBUG ] connected to host: carapuce 
+2014-02-06 15:51:42,885 [carapuce][DEBUG ] detect platform information from remote host
+2014-02-06 15:51:42,901 [carapuce][DEBUG ] detect machine type
+2014-02-06 15:51:42,904 [carapuce][DEBUG ] get remote short hostname
+2014-02-06 15:51:42,906 [carapuce][DEBUG ] write cluster configuration to /etc/ceph/{cluster}.conf
