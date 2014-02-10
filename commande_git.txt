@@ -13,18 +13,6 @@ ajouter les nouveaux fichiers dans le dossier ceph :
 	git add : selects changes
 	git commit : records changes
 	git push : shares changes
-blzegjezuohfiezjfgpiea
-f
-ezf
-ez
-f
-fze
-f
-ze
-g
-eg
-ze
-gz
 
 ajouter un dossier sur git : 
 	dans le dossier ceph :
