@@ -1,0 +1,31 @@
+pour installer git sur le pc :
+	git clone git://github.com/croustibot/ceph
+	cd ceph
+	git remote -v (pour voir les url avec les noms)
+	git remote add ceph https://github.com/yannicklap/ceph (pour ajouter 		un depot distant)
+
+ajouter les nouveaux fichiers dans le dossier ceph :
+	git pull (pour mettre à jour le dépôt local, à faire avant de modifier le dépôt)
+	git add <nom du fichier> (ou . pour tous ajouter)
+	git commit -m 'message afficher sur git'
+	git push ceph master
+	ou
+	git add : selects changes
+	git commit : records changes
+	git push : shares changes
+
+ajouter un dossier sur git : 
+	dans le dossier ceph :
+	mkdir <nom du dossier>
+	cd <nom du dossier>
+	ajouter tous les fichiers que vous voulez dans ce dossier.
+	Il faut minimun un fichier dans le dossier pour l'ajouter a git .
+	dans le dossier ceph :
+	git add .
+	git status (pour voir si les fichiers vont bien être ajouter)
+	git commit -m 'message afficher sur git'
+	git push ceph master
+
+si il y a des problème : 
+git log
+Enjoy !	

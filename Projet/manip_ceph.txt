@@ -1,0 +1,42 @@
+installation cluster :
+mkdir cluster
+cd cluster
+ceph-deploy new golem
+ceph-deploy install --no-adjust-repos golem (no-ajust-repos pour pas problème proxy):
+erreur : il manque le sudo apt-key add release.asc
+on l'as ajouté directement sur la machine avec une clé USB
+
+installation premier monitor:
+ceph-deploy mon create golem
+cat ceph.conf
+ceph-deploy gatherkeys golem
+modifier etc/ceph/ceph.conf
+service restart ceph
+
+Pour l'installation de l'osd il fallait une partition en xfs, on a utilisé gparted pour modifier le systéme des machines.
+on a zap le disque:
+ceph-deploy disk zap golem:sda3
+on a préparé l'osd : 
+ceph-deploy --overwrite-conf osd prepare golem:sda3
+(--overwrite-conf, pour modifier le ceph.conf)
+et on l'a activé:
+ceph-deploy osd activate golem:sda3
+modifier le etc/ceph/ceph.conf
+et on a restart ceph:
+service ceph restart
+et ceph status pour voir si l'osd a bien démarré
+
+installer le 2 monitor:
+sur golem :
+ceph-deploy install CephTest
+ceph-deploy mon create CephTest
+modifie le etc/ceph/ceph.conf
+sur CephTest :
+service ceph restart
+ceph status (pour verifier l'installation de ceph)
+sur golem : 
+installation du second osd : (un partition en xfs)
+ceph-deploy disk list CephTest
+ceph-deploy osd prepare CephTest:sda3
+ceph-deploy osd activate CephTest:sda3
+modifie le etc/ceph/ceph.conf
