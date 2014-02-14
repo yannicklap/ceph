@@ -1,0 +1,14 @@
+\documentclass {report}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{graphicx}
+
+\title{CEPH}
+\author{J. Lutz, Y. Laprévotte, R. S. M. Rodriguez-Garcia, J. Schneider}
+\date{13/02/2014}
+
+\begin{document}
+rapport en \LaTeX{} sur le projet CEPH
+\end{document}
+
