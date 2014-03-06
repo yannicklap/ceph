@@ -1,0 +1,112 @@
+installation  de 3 machines virtuelles centos.
+pour plus de performance : installation en mode minimal
+création de 2 partitions sur chaque machines : le système 4go et une partition pour lustree : 4go
+
+
+https://wiki.hpdd.intel.com/display/PUB/Lustre+2.5
+Donc installation Lustre 2.5 (2.6 pas encore dispo)
+
+http://downloads.whamcloud.com/public/lustre/ :
+
+
+. kernel-2.6.32-358.18.1.el6_lustre.x86_64.rpm
+. kernel-debuginfo-2.6.32-358.18.1.el6_lustre.x86_64.rpm
+. kernel-debuginfo-common-x86_64-2.6.32-358.18.1.el6_lustre.x86_64.rpm
+. kernel-devel-2.6.32-358.18.1.el6_lustre.x86_64.rpm
+. kernel-firmware-2.6.32-358.18.1.el6_lustre.x86_64.rpm
+. kernel-headers-2.6.32-358.18.1.el6_lustre.x86_64.rpm
+
+lustre-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
+. lustre-debuginfo-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
+. lustre-iokit-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
+. lustre-modules-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
+. lustre-osd-ldiskfs-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
+. lustre-osd-zfs-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
+. lustre-source-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
+lustre-tests-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
+
+. perf-2.6.32-358.18.1.el6_lustre.x86_64.rpm
+. perf-debuginfo-2.6.32-358.18.1.el6_lustre.x86_64.rpm
+. python-perf-2.6.32-358.18.1.el6_lustre.x86_64.rpm
+. python-perf-debuginfo-2.6.32-358.18.1.el6_lustre.x86_64.rpm
+
+problème : il manque des dépendances !
+yum install perl
+yum install libatk..
+yum install libgtk-x11...
+
+
+yum remove kernel-headers
+rpm -ivh kernel-headers....
+rpm -ivh kernel-debugtinfo-common...
+rpm -ivh kernel-debuginfo-2.6...
+rpm -ivh kernel-devel-...
+rpm -ivh kernel-firmware-...
+rpm -ivh kernel-2.6.32...
+
+rpm -ivh lustre-debuginfo-...
+rpm -ivh lustre-iokit-..... => pb dependances : yum install sg3_utils => ok
+rpm -ivh lustre-source-.... => pb dependances : yum install expect => ok
+
+rpm -ivh perf-debuginfo...
+rpm -ivh perf-2.6.... => pb dependances : yum install gtk2 => ok
+
+
+rpm -ivh lustre-modules.... => pb dependances zfs : 
+yum localinstall --nogpgcheck http://archive.zfsonlinux.org/epel/zfs-release-1-3.el6.noarch.rpm
+yum install zfs 
+=> autre problème : pb avec le kernel, donc désinstallation de ce que centos m'a proposé : rpm -e kernel-2.6.32-431.5.1.el6.x86_64
+=> réinstallation : rpm -ivh kernel-2.6.32-358.18.1.el6_lustre.x86_64.rpm 
+=> ok pour le kernel (malgré message : grubby fatal error : unable to find a suitable template, mais $? = 0 !!)
+=> ok pour lustre-modules....
+
+rpm -ivh lustre-osd-zfs.... ok
+
+rpm -ivh lustre-osd-ldiskfs-... => pb dependances : ldiskfsprogs
+=> besoin du paquet : e2fsprogs (http://downloads.whamcloud.com/public/e2fsprogs/latest/el6/RPMS/x86_64/)
+donc du coup installation de tous ces paquets :
+	e2fsprogs-1.42.7.wc2-7.el6.x86_64.rpm
+	e2fsprogs-debuginfo-1.42.7.wc2-7.el6.x86_64.rpm
+	e2fsprogs-devel-1.42.7.wc2-7.el6.x86_64.rpm
+	e2fsprogs-libs-1.42.7.wc2-7.el6.x86_64.rpm
+	e2fsprogs-static-1.42.7.wc2-7.el6.x86_64.rpm
+	libcom_err-1.42.7.wc2-7.el6.x86_64.rpm
+	libcom_err-devel-1.42.7.wc2-7.el6.x86_64.rpm
+	libss-1.42.7.wc2-7.el6.x86_64.rpm
+	libss-devel-1.42.7.wc2-7.el6.x86_64.rpm
+
+	rpm -ivh *rpm : pb conflits
+	=> version e2fsprogs-libs-1.41... installé.
+	=> desinstall ok
+	=> version libss-1.41.... installé
+	=> desinstall ok
+	=> version libcom_err-1.41... installé
+	=> desinstall non ok probleme de dépendances :
+		=> krb5-libs-1.10.....
+		=> libcurl-7.19....
+		=> openssh....
+	=> desinstall quand meme : rpm -ev --nodeps libcom_err-1.41.... OK (service ssh pb normal)
+	OK POUR L'INSTALL de e2fsprogs (rédemarrage ssh ok) 
+	
+OK pour l'install de lustre-osd-ldiskfs..
+
+rpm -ivh lustre-2.5.... => pb dépendances libnetsnmp...
+http://net-snmp.sourceforge.net/download.html
+	rpm -ivh net-snmp-libs-5.5... => pb dépendances... 
+	libperl, libcrypto, librpm, libwrap, libpopt
+	yum install libperl.so libcrypto.so.10 libpopt.so.0 librpm.so.1 libsensors.so.4 libwrap.so.0 
+	OK pour net-snmp
+
+toujours le meme probleme... 
+yum remove net-snmp-libs-5.5-49.el6.i686
+la doc intel utilise la version 5.5-44.
+https://wiki.hpdd.intel.com/display/PUB/Walk-thru-+Deploying+Lustre+pre-built+RPMs
+Donc test de cette version 
+recup des sources : http://rpm.pbone.net/index.php3/stat/3/srodzaj/1/search/libnetsnmp.so.20()(64bit)
+rpm --build net-snmp-5.5-44... : pb : option --build n'existe pas ???? pourtant le man de rpm dit le contraire
+=> alternative : utiliser rpm-build
+retest rpm -ivh lustre-2.5...
+
+
+lister les paquets installés : rpm -qa
+
