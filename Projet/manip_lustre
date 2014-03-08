@@ -16,7 +16,7 @@ http://downloads.whamcloud.com/public/lustre/ :
 . kernel-firmware-2.6.32-358.18.1.el6_lustre.x86_64.rpm
 . kernel-headers-2.6.32-358.18.1.el6_lustre.x86_64.rpm
 
-lustre-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
+. lustre-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
 . lustre-debuginfo-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
 . lustre-iokit-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
 . lustre-modules-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
@@ -105,7 +105,26 @@ Donc test de cette version
 recup des sources : http://rpm.pbone.net/index.php3/stat/3/srodzaj/1/search/libnetsnmp.so.20()(64bit)
 rpm --build net-snmp-5.5-44... : pb : option --build n'existe pas ???? pourtant le man de rpm dit le contraire
 => alternative : utiliser rpm-build
-retest rpm -ivh lustre-2.5...
+retest rpm -ivh lustre-2.5...   <= méthode oublié
+
+=> changement de stratégie : yum search all lib|grep snmp
+=> yum install net-snmp-libs.x86_64
+
+
+Il reste plus que lustre-tests.... => pb dépendance : libmpi.so.1
+yum install libmpi.so.1 => pb pas la bonne version. Installation pour i686
+=> yum install openmpi.x86_64
+
+
+
+
+Essai de l'installation apres tout ça : 
+=> pb conflit : on veut : kernel-firmware--2.6.32-358,  on a :  kernel-firmware-2.6.32-431.5.1.el6.noarch
+rpm -ev kernel-firmware-2.6.32.-431... ok
+
+Encore des erreurs sur la version de kernel 
+donc suppréssion du paquet concerné et retest.
+
 
 
 lister les paquets installés : rpm -qa
