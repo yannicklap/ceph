@@ -3,8 +3,9 @@ Introduction <= ok
 Système de fichier distribué <= ok
 
 Ceph
-  Introduction
-  Installation
+  Présentation <= ok
+  Architecture du cluster <= ok
+  Installation <= ok
   ...
   Conclusion
 	
@@ -20,3 +21,4 @@ Benchmark ?
 Conclusion
 
 Annexes
+Howto install ceph <= ok
