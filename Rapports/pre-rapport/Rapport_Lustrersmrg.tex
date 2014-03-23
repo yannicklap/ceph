@@ -1,65 +1,59 @@
-
-\documentclass[12pt]{article} % Default font size is 12pt, it can be changed here
+\documentclass[12pt]{article} 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
-\usepackage{geometry} % Required to change the page size to A4
-\geometry{a4paper} % Set the page size to be A4 as opposed to the default US Letter
+\usepackage{geometry} 
+\geometry{a4paper} 
 
-\usepackage{graphicx} % Required for including pictures
+\usepackage{graphicx} 
 
-\usepackage{float} % Allows putting an [H] in \begin{figure} to specify the exact location of the figure
-\usepackage{wrapfig} % Allows in-line images such as the example fish picture
+\usepackage{float} 
+\usepackage{wrapfig}
 
-\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\linespread{1.2}
 
-\linespread{1.2} % Line spacing
+\setlength\parindent{2.5pt}
 
-\setlength\parindent{2.5pt} % Uncomment to remove all indentation from paragraphs
+\graphicspath{{Pictures/}} 
 
-\graphicspath{{Pictures/}} % Specifies the directory where pictures are stored
 
 \begin{document}
 \begin{titlepage}
-\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\center 
 
-\center % Center everything on the page
-
-\textsc{\LARGE Universtité de Lorraine}\\[1.5cm] % Name of your university/college
-\textsc{\Large Projet Tutoré}\\[0.5cm] % Major heading such as course name
-\textsc{\large ASRALL}\\[0.5cm] % Minor heading such as course title
+\textsc{\LARGE Universtité de Lorraine}\\[1.5cm] 
+\textsc{\Large Projet Tutoré}\\[0.5cm]
+\textsc{\large ASRALL}\\[0.5cm]
 
 \HRule \\[0.4cm]
-{ \huge \bfseries Systèmes de Fichiers Distribués}\\[0.4cm] % Title of your document
+{ \huge \bfseries Systèmes de Fichiers Distribués}\\[0.4cm] 
 \HRule \\[1.5cm]
 
 \begin{minipage}{0.4\textwidth}
 \begin{flushleft} \large
 \emph{Author:}\\
-Ricardo \textsc{RODRÍGUEZ}
-Julien\textsc{SCHNEIDER}
-Jean \textsc{LUTZ}
-Yannick \textsc{LAPREVOTTE}
+Ricardo \textsc{RODRÍGUEZ}\\
+Julien \textsc{SCHNEIDER}\\
+Jean \textsc{LUTZ}\\
+Yannick \textsc{LAPREVOTTE}\\
 \end{flushleft}
 \end{minipage}
 ~
 \begin{minipage}{0.4\textwidth}
 \begin{flushright} \large
 \emph{Supervisor:} \\
- Stephane \textsc{CASSET} % Supervisor's Name
+ Stephane \textsc{CASSET} 
 \end{flushright}
 \end{minipage}\\[4cm]
 
-{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+{\large \today}\\[3cm] 
 
-%\includegraphics{Logo}\\[1cm] % Include a department/university logo - this will require the graphicx package
-
-\vfill % Fill the rest of the page with whitespace
-
+\vfill 
 \end{titlepage}
 
 
-\tableofcontents % Include a table of contents
+\tableofcontents 
 
 \newpage 
 
@@ -250,7 +244,6 @@ Après la compilation du noyau de Linux on a essayé d'installer les paquets Lus
 \subsection{Faru}
 \section{Conclusion}
 
-\begin{thebibliography}
 http://doc.ubuntu-fr.org/tutoriel/compiler\_linux 
 http://wiki.lustre.org/manual/LustreManual18\_HTML/IntroductionToLustre.html
 http://wiki.lustre.org/index.php/Debian\_Install
@@ -258,6 +251,5 @@ https://wiki.debian.org/Lustre
 http://downloads.whamcloud.com/public/lustre/lustre-2.5.1/el6/client/RPMS/x86\_64/
 http://ocubom.wordpress.com/2008/05/21/estructuras-basicas-de-latex/
 http://en.wikipedia.org/wiki/Lustre\_(file\_system)
-\end{thebibliography}
 
 \end{document}
