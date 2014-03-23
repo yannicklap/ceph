@@ -142,5 +142,25 @@ redimensionnement des partitions
 => lvscan
 => lvresize -L -1GO /dev/vg_centos/lv_swap
 => lvresize -L +1GO /dev/vg_centos/lv_root
-reboot sur le disque virtuel
 
+redimensionnement du système de fichier
+e2fsck -f /dev/vg_centosre/root
+ => fichier introuvable... ???
+ => démarrage sur un live CD pour pourvoir monter centos.
+ => mount
+ => /dev/mapper/vg_centosre-lv_root
+ => e2fsck -f /dev/mapper/vg_centos-lv_root
+ => OK
+ => resize2fs /dev/mapper/vg_centosre-lv_root
+ => OK
+reboot
+df -h
+OK
+
+
+
+sur client :
+mount -t lustre 192.168.122.251@tcp0:/lustrefs lustre
+
+=> redimensionnement système de fichier
+reboot sur le disque virtuel
