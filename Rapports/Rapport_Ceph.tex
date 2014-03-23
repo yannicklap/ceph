@@ -39,7 +39,7 @@
 	Ceph est un système de fichier open-source, développé à partir d'un algorithme de nouvelle
 génération appelé CRUSH. Il est évolutif (scalable) et est capable de fonctionner sur un parc de machines très diverses, on appelle ces parc de machines un cluster Ceph. Son fonctionnement repose sur 3 types de serveurs :
 \\	- les OSDs (Object Storage Deamon), qui sont les serveurs de stockage. Les données seront donc enregistrées sur ces nœuds. Il est préférable d'avoir une bonne quantité de mémoire, car les OSDs journalisent les opérations d'écritures en mémoire ce qui prend de la place de stockage. Il faut au minimum 2 OSD pour que le cluster Ceph soit opérationnel.
-\\	- Les Monitors (Ceph Monitor) ceux-ci sont en place pour surveiller que tout fonctionne correctement. Lorsque l'on dispose d'un réseau conséquent en nœuds, il est important de savoir très rapidement quand il y a un soucis quelque part. Il est mieux d'avoir plusieurs Monitors dans le cluster Ceph pour permettre de repérer plus rapidement les erreurs et avoir un bon niveau de tolérance aux pannes. Les monitors sont des daemons relativement léger et ne nécessite pas une grande quantité de mémoire ou d’espace disque.
+\\	- Les Monitors (Ceph Monitor) ceux-ci sont en place pour surveiller que tout fonctionne correctement. Lorsque l'on dispose d'un réseau conséquent en nœuds, il est important de savoir très rapidement quand il y a un soucis quelque part. Il est mieux d'avoir plusieurs Monitors dans le cluster Ceph pour permettre de repérer plus rapidement les erreurs et avoir un bon niveau de tolérance aux pannes. Les monitors sont des daemons relativement léger et ne nécessite pas une grande quantité de mémoire ou d'espace disque.
 \\	- Le troisième type de nœud est le MDS (MetaData Server). Celui-ci détient toutes les informations permettant de trouver les données demandées et leurs attributs. Ces informations sont très souvent consultées, elle sont dont stockées en mémoires pour en amélioré l'accès. Il faut donc une grande quantité de RAM sur les ordinateur qui hébergent les MDS.
 \\ Attention il n'est pas encore recommandé de l'utiliser en production : celui-ci est encore en phase de développement.
 \newpage
@@ -78,7 +78,29 @@ nom machine : porygon
 Nous avons également dû installer les clients qui utilise ce cluster nous les avons installé sur nos machines personnelles.
 
 	\subsection{Installation}
-	\subsection{How to install ceph}
+	
+	Ceph a été créer pour fonctionner sur du matériel de base, pas besoin d'avoir de grosse configuration ou de matériel spécifique pour faire tourner ceph, ce qui rend la construction et le maintien d'un cluster de données de l'ordre du pétaoctets facilement et économiquement réalisable.
+	Pour l'installation de Ceph, il faut d'abord configurer le matériel que nous allons utiliser.
+
+	Recommandation Matériel :
+	
+	CPU :
+	MDS : Les serveurs de métadonnée redistribue dynamiquement leur metadonnée, ce qui utilise une grande quantité de puissance CPU. Les MDS doivent avoir un assez bon processeur (quad-core ou mieux).
+	Osd : Les serveur de donnée ceph font tourner le service RADOS, calculent le placement des datas avec CRUSH, repliquent les données, et maintiennent des copies de la carte (map ?) du cluster. Les servuer de donnée ont un besoin résonnables de puissance CPU.
+	Monitor : les monitor n'ont pas besoin de puissance CPU, ils ne font que maintenir une copie de la carte du cluster pour repérer les erreurs dans le cluster.
+	
+	RAM :
+	La ram est surtout utilisé par les serveurs de métadonnée et les monitors, car ils doivent être capable de parcourir leur données rapidement, ils doivent donc avoir une bonne quantité de RAM. Il est recommandé d'avoir 1 GB de RAM par daemon.
+	Les Osds n'utilisent pas beaucoup de RAM pour leurs fonctionnements normal, mais ils utilisent plus de RAM si l'on lance une récupération de donnée.
+	
+	
+	\subsection{Test de disponibilités}
+	\subsection{Test de performances}
+	
+	
+  \section{Annexe}
+ 
+  \subsection{How to install ceph}
 	Partitionnement :
 	\\En premier, on a partitionné les machines sur lesquels un OSD sera installé, nous avons créer de nouvelle partition en xfs pour stocker les données du cluster avec le logiciel Gparted. Sur chaque machines nous avons fait une partition de environs 10 Go.
 	\\Configuration du Réseau :
@@ -230,6 +252,10 @@ Nous arrivons à la dernière partie de l'installation où nous allons installé
 
 ceph-deploy mds create carapuce smogogo porygon
 
+et nous voulons 2 mds d'actif, pour l'instant il y en a un d'actif de base on utilise la commande suivante :
+
+$ceph mds set_max_mds 2$
+
 Ensuite nous avons fait un ceph status pour voir si le système ceph était bien installé :
 <images console ceph status final>
 
@@ -278,13 +304,7 @@ et nous avons finalement monter le bloc sur le système client avec :
 $mkdir /mnt/rbd_foo
 mount /dev/rbd/rbd/foo /mnt/rbd_foo
 $
-A partir d'ici nous pouvons écrite/lire des fichiers sur notre système de fichier distribué ceph à partir d'un client et réalisé les test de performances.
+A partir d'ici nous pouvons écrite/lire des fichiers sur notre système de fichier distribué ceph à partir d'un client et réaliser les test de performances.
 
-
-	\subsection{Test de disponibilités}
-	\subsection{Test de performances}
-	
-	
-  
 \end{document}
 
