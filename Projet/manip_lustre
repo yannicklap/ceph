@@ -87,7 +87,7 @@ donc du coup installation de tous ces paquets :
 		=> openssh....
 	=> desinstall quand meme : rpm -ev --nodeps libcom_err-1.41.... OK (service ssh pb normal)
 	OK POUR L'INSTALL de e2fsprogs (rédemarrage ssh ok) 
-	
+((openssh-server-5.3p1-94
 OK pour l'install de lustre-osd-ldiskfs..
 
 rpm -ivh lustre-2.5.... => pb dépendances libnetsnmp...
@@ -128,4 +128,19 @@ donc suppréssion du paquet concerné et retest.
 
 
 lister les paquets installés : rpm -qa
+
+
+
+
+
+Manque de place sur une VM
+3,5go de root et 2 go de swap
+objectif 4,5go de root 1go de swap
+reboot sur liveCD.
+mode rescue.
+redimensionnement des partitions
+=> lvscan
+=> lvresize -L -1GO /dev/vg_centos/lv_swap
+=> lvresize -L +1GO /dev/vg_centos/lv_root
+reboot sur le disque virtuel
 
