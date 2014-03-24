@@ -21,7 +21,7 @@
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 \center 
 
-\textsc{\LARGE Université de Lorraine}\\[1.5cm] 
+\textsc{\LARGE Universtité de Lorraine}\\[1.5cm] 
 \textsc{\Large Projet Tutoré}\\[0.5cm]
 \textsc{\large ASRALL}\\[0.5cm]
 
@@ -111,19 +111,19 @@ Nous avons également dû installer les clients qui utilise ce cluster nous les 
 
 	\subsection{Installation}
 	
-	Ceph a été créer pour fonctionner sur du matériel de base, pas besoin d'avoir de grosse configuration ou de matériel spécifique pour faire tourner ceph, ce qui rend la construction et le maintien d'un cluster de données de l'ordre du péta-octets \footnote{Un péta-octet contient \begin{math}10^{15}\end{math} octets} facilement et économiquement réalisable.
+	Ceph a été créer pour fonctionner sur du matériel de base, pas besoin d'avoir de grosse configuration ou de matériel spécifique pour faire tourner ceph, ce qui rend la construction et le maintien d'un cluster de données de l'ordre du pétaoctets \footnote{Un pétaoctet contient \begin{math}10^{15}\end{math} octets} facilement et économiquement réalisable.
 	Pour l'installation de Ceph, il faut d'abord configurer le matériel que nous allons utiliser.
 
  \subsubsection{Installation Matériel }	
 	
  \textbf{CPU :}
 	\begin{description}
- \item[MDS:]  Les serveurs de méta-donnée \footnote{c'est une donnée servant à définir ou décrire une autre donnée quel que soit son support} redistribue dynamiquement leur méta-donnée, ce qui utilise une grande quantité de puissance processeur \textit{CPU} \footnote{est le composant de l'ordinateur qui exécute les instructions machine des programmes informatiques.}. Les MDS doivent avoir un assez bon processeur (quad-core ou mieux).
- \item[OSD:] Les serveur de donnée ceph font tourner le service RADOS (\textit{Reliable Autonomic Distributed Object Store} ) \footnote{RADOS s'occupe de la distribution des objets dans l'ensemble du cluster de stockage et les reproduire pour la tolérance de panne}, calculent le placement des datas avec CRUSH, répliquent les données, et maintiennent des copies de la carte \footnote{Une série de cartes comportant la carte de moniteur,la carte des OSDs,la carte PG, la carte des MDS et la carte CRUSH} (\textit{map}) du cluster. Les serveur de donnée ont un besoin raisonnables de puissance CPU.
+ \item[MDS:]  Les serveurs de métadonnée \footnote{c'est une donnée servant à définir ou décrire une autre donnée quel que soit son support} redistribue dynamiquement leur metadonnée, ce qui utilise une grande quantité de puissance processeur \textit{CPU} \footnote{est le composant de l'ordinateur qui exécute les instructions machine des programmes informatiques.}. Les MDS doivent avoir un assez bon processeur (quad-core ou mieux).
+ \item[OSD:] Les serveur de donnée ceph font tourner le service RADOS (\textit{Reliable Autonomic Distributed Object Store} ) \footnote{RADOS s'occupe de la distribution des objets dans l'ensemble du cluster de stockage et les reproduire pour la tolérance de panne}, calculent le placement des datas avec CRUSH, repliquent les données, et maintiennent des copies de la carte \footnote{Une série de cartes comportant la carte de moniteur,la carte des OSDs,la carte PG, la carte des MDS et la carte CRUSH} (\textit{map}) du cluster. Les serveur de donnée ont un besoin raisonnables de puissance CPU.
 \item[Monitor:]les monitor n'ont pas besoin de puissance CPU, ils ne font que maintenir une copie de la carte du cluster pour repérer les erreurs dans le cluster.\\
 	
 \textbf{RAM :}
-	\\La ram est surtout utilisé par les serveurs de méta-donnée et les monitors, car ils doivent être capable de parcourir leur données rapidement, ils doivent donc avoir une bonne quantité de RAM. Il est recommandé d'avoir 1 GB de RAM par daemon \footnote{désigne un type de programme informatique, un processus ou un ensemble de processus qui s'exécute en arrière-plan plutôt que sous le contrôle direct d'un utilisateur.}.
+	\\La ram est surtout utilisé par les serveurs de métadonnée et les monitors, car ils doivent être capable de parcourir leur données rapidement, ils doivent donc avoir une bonne quantité de RAM. Il est recommandé d'avoir 1 GB de RAM par daemon \footnote{désigne un type de programme informatique, un processus ou un ensemble de processus qui s'exécute en arrière-plan plutôt que sous le contrôle direct d'un utilisateur.}.
 	Les Osds n'utilisent pas beaucoup de RAM pour leurs fonctionnements normal, mais ils en utilisent plus si l'on lance une récupération de donnée.
 		\end{description}
 		
@@ -135,11 +135,11 @@ Nous avons également dû installer les clients qui utilise ce cluster nous les 
 		Elles ont assez d'espace disque et de RAM pour faire marcher ces 2 services.
 		\end{description}
 	\subsubsection{Configuration Réseau}
-	Pour la configuration réseau du système de fichier distribué, nous avons permit aux machines de se connecter entre elle de manière sécurisé grâce au protocole ssh. Nous avons modifié la configuration ldu fichier /etc/hosts en rajoutant toutes nos machines dedans. Ensuite nous avons créer un utilisateur sur chaque machines qui nous permettra d'installer ceph, Pour finir nous avons échangé les clés de sécurité ssh entre toute les machines pour sécuriser les connexions.
+	Pour la configuration réseau du système de fichier distribué, nous avons permit aux machines de se connecter entre elle de manière sécurisé grâce au protocol ssh. Nous avons modifié la configuration le fichier /etc/hosts en rajoutant toutes nos machines dedans. Ensuite nous avons créer un utilisateur sur chaque machines qui nous permettra d'installer ceph, Pour finir nous avons échangé les clé de sécurité ssh entre toute les machines pour sécuriser les connexions.
 	
 	\subsubsection{Mise à Jour système}
 	Nous avons mit à jour le système de nos machines en installant et en configurant un serveur de synchronisation d'horloge, le service NTP, pour ne pas avoir de décalage entre les machines ce qui pose problème sur un système de fichier distribué, pour la copie ou la lecture de fichier sur ceph. Et aussi LSB qui standardise la structure des systèmes d'exploitation GNU/Linux, ceph est alors installé sur des systèmes d'exploitations similaires.
-	Pour installer Ceph sur la première machine (golem), nous avons ajouté les dépôts ceph dans le fichier de source /etc/apt/sources/list, et aussi installé les paquets $ceph,\ ceph-deploy$.
+	Pour installer Ceph sur la première machine (golem), nous avons ajouté les dépots ceph dans le fichier de sources /etc/apt/sources/list, et aussi installé les paquets $ceph,\ ceph-deploy$.
 	\\La création du répertoire de travail dans le dossier courant de l'utilisateur ceph vas nous permettre d'installer ceph à partir de l'Admin Node.
 	
 	\subsubsection{Création du cluster et installation des monitors }
@@ -172,7 +172,7 @@ Nous avons également dû installer les clients qui utilise ce cluster nous les 
 	  	\begin{verbatim}
 	  	ceph-deploy mds create <nomdemachine>
 	  	\end{verbatim}
-	  	Maintenant le cluster a 1 MDS activé et 2 en standby ils attendent jusqu'à ce que le MDS actif crash ou lag pour s'activer et mettre le MDS instable en standby.
+	  	Maintenant le cluster a 1 MDS activé et 2 en standby ils attendent jusqu'a ce que le MDS actif crash ou lag pour s'activé et mettre le MDS instable en standby.
 	  	Mais nous voulons 2 mds actif, car les MDS sont des goulots d'étranglement pour l'enregistrement des fichiers sur ceph. 2 MDS permettraient de pourvoir réaliser des benchmarks avec de meilleurs performances.
 	  	Nous utilisons alors la commande :
 	  	\begin{verbatim}
@@ -181,7 +181,7 @@ Nous avons également dû installer les clients qui utilise ce cluster nous les 
 	  	
 	  	\subsubsection{Installation du client}
 	  	Le client vas être sur une machine que l'on a ajouté dans le réseau de ceph avec l'aide de ssh, la création d'un utilisateur ceph, et la copie de la configuration du cluster.
-	  	Nous avons alors créer notre premier bloc de donnée dans une piscine du cluster ceph il a 3 piscines de base, nous utilisons rbd :
+	  	Nous avons alors créer notre premier bloc de donnée dans une piscine du cluster ceph il a 3 piscine de base, nous utilisons rbd :
 	  	\begin{verbatim}
 	  	ceph-deploy create <nom du bloc> --size <espace disque> --pool
 	  	 <piscine utilisé>
@@ -190,7 +190,7 @@ Nous avons également dû installer les clients qui utilise ce cluster nous les 
 	  	\begin{verbatim}
 	  	rbd map <nom du bloc> -pool <piscine utilisé>
 	  	\end{verbatim}
-	  	Ensuite nous avons ajouté un système de fichier sur le bloc de donné créer.
+	  	Ensuite nous avons ajouté un système de fichier sur le block de donné créer.
 	  	\begin{verbatim}
 	  	mkfs.rxt4 -m0 /dev/rbd/<nom du bloc>
 	  	\end{verbatim}
@@ -203,7 +203,7 @@ Nous avons également dû installer les clients qui utilise ce cluster nous les 
 	\subsection{Erreurs rencontrées lors de l'installation de Ceph}
 	\subsubsection{Erreur lors de l'installation du premier MDS}
 	Pendant notre 1ère installation de Ceph, nous avions réussit à installer :
-	\\ 1 Monitor sur golem et 2 OSDs sur golem et rondoudou, mais lorsque nous avons tenté d'installer le 1èr MDS avec la commande :
+	\\ 1 Monitor sur golem et 2 OSDs sur golem et rondoudou, mais lorsque nous avons tenté d'installer le 1er MDS avec la commande :
 	\begin{verbatim}
 	ceph@golem:~/cluster$ceph-deploy mds create carapuce
 	\end{verbatim}
@@ -268,7 +268,7 @@ Nous avons supprimer le cluster ceph avec purge autoremove, nous avons égalemen
  
 	 $ Un\ dans\ /home/ceph/cluster\ fsid\ =\ d4a63950-a12f-4e4d-983b-57583bf09bac$
 	 
-	 Mais lors de nos manipulations sur notre 1ère installation, nous avons lancé des commandes ceph-deploy en-dehors de notre répertoire cluster, ce qui a créer de nouveau fichier de configuration et un autre cluster instable avec un nom par défaut. Mais nous n'avions pas changer le nom par défaut de notre cluster et donc plusieurs cluster du même nom ont été créer, et les cluster en-dehors du répertoire cluster était instable, ce qui a posé problème lors du démarrage du service ceph.	
+	 Mais lors de nos manipulations sur notre 1ére installation, nous avons lancé des commandes ceph-deploy en-dehors de notre répertoire cluster, ce qui a créer de nouveau fichier de configuration et un autre cluster instable avec un nom par défaut. Mais nous n'avions pas changer le nom par défaut de notre cluster et donc plusieurs cluster du même nom ont été créer, et les cluster en-dehors du répertoire cluster était instable, ce qui a posé problème lors du démarrage du service ceph.	
 
 On a alors purge toute l'installation de ceph avec :
 \begin{verbatim}
@@ -328,7 +328,7 @@ Nos machines sont donc toutes synchronisée à partir de golem et nous n'avons p
 	Ceph permet de facilement ajouter/supprimer de nouveaux nœud dans le cluster : comme des monitors, des osds ou des mds.
 
 	\subsubsection{Test de surpression d'un MDS}
-	Vérification du système sur ceph avec le mds planté :
+	Vérification du sytéme sur ceph avec le mds planté :
 \begin{verbatim}
 ceph@golem:~/cluster-cheese$ceph health 
     HEALTH_WARN mds carapuce is laggy  
@@ -739,12 +739,12 @@ On vois que nos 3 monitors ont été ajouté dans la configuration du cluster.
 
 \subsubsection{Installation des Osds}
 
-Pour l'installation des OSDs nous avons créé une partition de type xfs sur les machines golem, rondoudou et behemot, nous avons utilisé la commande :
+Pour l'installation des OSD nous avons créé une partition de type xfs sur les machines golem, rondoudou et behemot, nous avons utilisé la commande :
 \begin{verbatim}
 ceph@golem:~/cluster-cheese$ceph-deploy disk list <nomdemachine>
 \end{verbatim}
 
-Qui permet de voir les partitions et leur système de partitionnement sur les différents nodes.
+Qui permet de voir les partitions et leurs système de partitionnement sur les différents nodes.
 
 Ensuite depuis golem on a formaté ces partitions avec les commandes :
 \begin{verbatim}
@@ -766,7 +766,7 @@ ceph@golem:~/cluster-cheese$ceph-deploy osd activate behemot:sda3
 (Pour certaine de ces commandes nous avons du rajouter l'option --overwrite-conf, pour modifier la configuration de ceph sur les nodes, 
 ex: ceph-deploy --overwrite-conf osd prepare golem:sda3)
 
-Après avoir installé les OSDs nous pouvons déjà regardé si ceph est installé correctement avec la commande :
+Après avoir installé les Osds nous pouvons déjà regardé si ceph est installé correctement avec la commande :
 \begin{verbatim}
 ceph@golem:~/cluster-cheese$ceph status     
     cluster dde8d8a9-e880-4c81-8bc6-8ede2adbe71
