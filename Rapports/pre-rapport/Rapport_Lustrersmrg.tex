@@ -674,7 +674,38 @@ La procédure est donc fini pour le serveur de stockage. Il faut maintenant s'oc
 
 Nous voyons bien que l'opération s'est exécutée correctement, le client est bel et bien en place. La partition monté sur /lustre est accessible par le réseau via l'adresse ip de notre serveur de métadonnées comme prévus. Attention cette ligne (dernière ligne retournée par 'mount' sur la figure ci-dessus) peut faire penser à la syntaxe utilisée par la commande 'scp', la copie de données via SSH. C'est à dire que la partie '/lustrefs' ne représente pas un dossier disponible à l'adresse ip correspondante, mais précise le cluster Lustre. Nous avons fourni ce nom dans les commandes précédentes lors du formatage des disques virtuels. 
 
-\subsection{Conclusion}
+\subsection{Conclusion Lustre}
+
+Lustre est impliqué dans de nombreux projets impressionnants, le plus souvent liés à la recherche. On retrouve ce système de fichiers en astrophysique, en science des matériaux, en chimie, en nanosciences, dans le domaine énergétique, ou encore en météorologie. Lustre a une énorme présence dans le monde du big data. Le projet GENCI (Grand Equipement National de Calcul Intensif), un super-calculateur de plus de 92 000 cœurs, de 360 To de mémoire vive et de 40Gb/s de bande passante, pour donner une idée de la proportion dans quels conditions Lustre peut être sollicité. Des grosses entreprises l'ont aussi adoptés tels que DELL, HP, BULL... Notre système de fichiers est donc un projet bien abouti qui est capable de travailler sur des quantités de données inimaginables tous en garantissant des performances extrêmes.
+
+\newpage
+\section{Conclusion}
+
+A l'heure où le cloud est en pleine expansion, il est légitime qu'un administrateur système s'informe et s’interroge sur le réel bénéfice que pourraient lui apporter les technologies des systèmes de fichiers distribués. Son succès en fait une technologie d'avenir pour plusieurs raisons, l'intégrité et l’accessibilité des données.
+
+Cependant le cloud peut faire peur car la technologie met à disposition des énormes quantités de données à des entreprises capables de les exploiter... De plus, le cloud est une question de confiance, si un utilisateur y place toutes ces données sans faire de sauvegarde, il doit être capable d'accepter leur perte. En effet, certains hébergeurs sont susceptibles d'être plus fiable techniquement et financièrement que d'autres. Le cloud computing est-il alors une bonne chose ? Et dans 20 ans ? Une nouvelle fois, tout repose sur la bonne foie des personnes concernées.
+
+Ceph et Lustre sont des technologies faites pour répondre à ce besoin. Le premier n'est pas encore conseillé en production mais le deuxième est déjà utilisé sur les plus gros data center du monde. Ce sont des technologies complexes, relativement récentes et très bien pensées. Elles permettent une énorme flexibilité de stockage, l'intégrité des données, la répartition de charges, la transparence côté utilisateur, d'excellentes performances... Beaucoup d'avantages mais aussi quelques inconvénients. Le premier, le plus flagrant, est la complexité de l'installation, particulièrement pour Lustre, accessible qu'à un spécialiste.
+
+En effet des compétences en système GNU Linux sont indispensables. De la même manière, les systèmes de fichiers distribués sont compliqués à maintenir, dans le sens où, en cas d'erreur, la résolution de ce dernier peut s'avérer fastidieuse. Sinon la documentation était nombreuse mais répétitive. Pour une erreur bien précise, lors du déploiement du cluster par exemple, la recherche d'informations se complexifie et la bonne documentation se raréfie. Il reste un dernier point à éclaircir. 
+
+Les systèmes étant compliqués, il est pas facile de comprendre comment les données sont réellement réparties dans le cluster. Par conséquent, comment savoir le niveau d'intégrité des données fourni par le service. En d'autres mots, sont-ils fiables à 100 \%, 99,9987 \% ? La question se pose principalement pour Ceph contrairement à Lustre qui a déjà fait ses preuves : sur les 100 plus gros super-calculateurs sur notre planète, 60 utilisent Lustre. Ce dernier est donc déjà à un stade avancé de son développement, mais est-il réellement fiable à 100\% pour autant ? Chacun ses avantages et ses inconvénients, Ceph est à préféré pour un particulier et Lustre pour une mise en production.
+
+Le sujet était enrichissant. Il a nécessité la maîtrise et la compréhension de nombreux systèmes qui nous ont servi dans l'avancé du projet, comme le SSH, la compilation de noyaux, la manipulation de LVM et de KVM, le clustering, la gestion des sauvegardes, la gestion de projet sous git et github....Mais avant tout, nous avons appris à mettre en œuvre des systèmes de fichiers distribués, avec toutes les connaissances qui englobent cette pratique. C'est à dire une meilleure compréhension des erreurs et des logs, une meilleur notion du nombre et du type de machines à déployer, du hardware nécessaire, des performances de ce type de système, de son fonctionnement interne... Un peu moins technique, mais tout aussi important, le projet nous impose de respecter des délais, nous avons donc dû nous organiser et dialoguer un maximum via Etherpad par exemple. De plus la répartition du travail n'était pas facile. Pour être efficace un maximum, chacun a travaillé sur une partie différente de son côté. Pendant qu'une personne rédiger le rapport hebdomadaire, une personne testait l'installation sur le cluster dans notre salle de cours, et les deux autres membres de l'équipe essayaient chacun les manipulations en machines virtuelles, avec une distribution différente par exemple. En cas de soucis majeur, l'entraide était toujours présente au sein de notre groupe. 
+	Nous avons donc eut la chance de profiter d'un sujet très intéressant, motivant, et profitable pour notre carrière. Nous garderons un bon souvenir de cette expérience.
+\newpage
+\section{Remerciments}
+
+De la part de toute notre équipe, nous tenons à remercier M. Casset, notre tuteur, qui nous a fortement aidé, ainsi que tous les camarades de classes qui nous ont soutenu dans l'accomplissement de ce projet.
+\newpage
+\section{Sources}
+http://doc.ubuntu-fr.org/tutoriel/compiler\_linux \\
+http://wiki.lustre.org/manual/LustreManual18\_HTML/IntroductionToLustre.html \\
+http://wiki.lustre.org/index.php/Debian\_Install \\
+https://wiki.debian.org/Lustre \\
+http://downloads.whamcloud.com/public/lustre/lustre-2.5.1/el6/client/RPMS/x86\_64/ \\
+http://ocubom.wordpress.com/2008/05/21/estructuras-basicas-de-latex/ \\
+http://en.wikipedia.org/wiki/Lustre\_(file\_system) \\
 
 
 \section{Annexe}
@@ -940,15 +971,165 @@ ceph@ronflex:~/$mount /dev/rbd/rbd/foo /mnt/rbd_foo
 \end{verbatim}
 
 A partir d'ici nous pouvons écrite/lire des fichiers sur notre système de fichier distribué Ceph à partir d'un client et réaliser les test de performances.
-\section{Conclusion}
+
+\subsection{Manipulations Lustre}
+
+Fichier Anexe manip\_lustre\footnote{https://github.com/yannicklap/ceph/blob/master/Projet/manip\_lustre}
+
+\begin{verbatim}
+*********** installation Lustre 1er essai sur CentOS 6.5 ****************
 
 
-http://doc.ubuntu-fr.org/tutoriel/compiler\_linux 
-http://wiki.lustre.org/manual/LustreManual18\_HTML/IntroductionToLustre.html
-http://wiki.lustre.org/index.php/Debian\_Install
-https://wiki.debian.org/Lustre
-http://downloads.whamcloud.com/public/lustre/lustre-2.5.1/el6/client/RPMS/x86\_64/
-http://ocubom.wordpress.com/2008/05/21/estructuras-basicas-de-latex/
-http://en.wikipedia.org/wiki/Lustre\_(file\_system)
+https://wiki.hpdd.intel.com/display/PUB/Lustre+2.5:
+installation Lustre 2.5
 
+http://downloads.whamcloud.com/public/lustre/ :
+
+kernel-2.6.32-358.18.1.el6_lustre.x86_64.rpm
+kernel-debuginfo-2.6.32-358.18.1.el6_lustre.x86_64.rpm
+kernel-debuginfo-common-x86_64-2.6.32-358.18.1.el6_lustre.x86_64.rpm
+kernel-devel-2.6.32-358.18.1.el6_lustre.x86_64.rpm
+kernel-firmware-2.6.32-358.18.1.el6_lustre.x86_64.rpm
+kernel-headers-2.6.32-358.18.1.el6_lustre.x86_64.rpm
+lustre-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
+lustre-debuginfo-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
+lustre-iokit-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
+lustre-modules-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
+lustre-osd-ldiskfs-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
+lustre-osd-zfs-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
+lustre-source-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
+lustre-tests-2.5.0-2.6.32_358.18.1.el6_lustre.x86_64.x86_64.rpm
+perf-2.6.32-358.18.1.el6_lustre.x86_64.rpm
+perf-debuginfo-2.6.32-358.18.1.el6_lustre.x86_64.rpm
+python-perf-2.6.32-358.18.1.el6_lustre.x86_64.rpm
+python-perf-debuginfo-2.6.32-358.18.1.el6_lustre.x86_64.rpm
+
+
+rpm -ivh *.rpm
+problème : il manque des dépendances !
+=> yum install perl
+=> yum install libatk..
+=> yum install libgtk-x11...
+
+rpm -ivh kernel-headers....
+=> yum remove kernel-headers
+=> ok
+rpm -ivh kernel-debugtinfo-common...
+rpm -ivh kernel-debuginfo-2.6...
+rpm -ivh kernel-devel-...
+rpm -ivh kernel-firmware-...
+rpm -ivh kernel-2.6.32...
+
+rpm -ivh lustre-debuginfo-...
+rpm -ivh lustre-iokit-..... 
+=> pb dependances : yum install sg3_utils 
+=> ok
+rpm -ivh lustre-source-.... 
+=> pb dependances : yum install expect 
+=> ok
+
+rpm -ivh perf-debuginfo...
+rpm -ivh perf-2.6.... 
+=> pb dependances : yum install gtk2 
+=> ok
+
+
+rpm -ivh lustre-modules.... 
+=> pb dependances zfs : 
+	=> yum localinstall --nogpgcheck http://archive.zfsonlinux.org/epel/zfs-release-1-3.el6.noarch.rpm
+	=> yum install zfs 
+=> autre problème : pb avec le kernel, donc désinstallation de ce que centos m'a proposé : rpm -e kernel-2.6.32-431.5.1.el6.x86_64
+	=> réinstallation : rpm -ivh kernel-2.6.32-358.18.1.el6_lustre.x86_64.rpm 
+	=> ok pour le kernel (malgré message : grubby fatal error : unable to find a suitable template, mais $? = 0 !!)
+=> ok
+
+rpm -ivh lustre-osd-zfs....
+
+rpm -ivh lustre-osd-ldiskfs-... 
+=> pb dependances : ldiskfsprogs
+	=> besoin du paquet : e2fsprogs (http://downloads.whamcloud.com/public/e2fsprogs/latest/el6/RPMS/x86_64/)
+		donc du coup installation de tous ces paquets :
+		e2fsprogs-1.42.7.wc2-7.el6.x86_64.rpm
+		e2fsprogs-debuginfo-1.42.7.wc2-7.el6.x86_64.rpm
+		e2fsprogs-devel-1.42.7.wc2-7.el6.x86_64.rpm
+		e2fsprogs-libs-1.42.7.wc2-7.el6.x86_64.rpm
+		e2fsprogs-static-1.42.7.wc2-7.el6.x86_64.rpm
+		libcom_err-1.42.7.wc2-7.el6.x86_64.rpm
+		libcom_err-devel-1.42.7.wc2-7.el6.x86_64.rpm
+		libss-1.42.7.wc2-7.el6.x86_64.rpm
+		libss-devel-1.42.7.wc2-7.el6.x86_64.rpm
+
+rpm -ivh *rpm : pb conflits
+=> version e2fsprogs-libs-1.41... installé.
+=> desinstall ok
+=> version libss-1.41.... installé
+=> desinstall ok
+=> version libcom_err-1.41... installé
+=> desinstall non ok probleme de dépendances :
+	=> krb5-libs-1.10.....
+	=> libcurl-7.19....
+	=> openssh....
+	=> desinstall quand meme : rpm -ev --nodeps libcom_err-1.41.... OK (service ssh pb normal)
+	=> OK pour l'install de e2fsprogs (rédemarrage ssh ok) 
+=> OK pour l'install de lustre-osd-ldiskfs..
+
+rpm -ivh lustre-2.5.... 
+=> pb dépendances libnetsnmp...
+	=> http://net-snmp.sourceforge.net/download.html
+	=> rpm -ivh net-snmp-libs-5.5... 
+		=> pb dépendances... libperl, libcrypto, librpm, libwrap, libpopt
+		=> yum install libperl.so libcrypto.so.10 libpopt.so.0 librpm.so.1 libsensors.so.4 libwrap.so.0 
+
+	=> recup des sources : http://rpm.pbone.net/index.php3/stat/3/srodzaj/1/search/libnetsnmp.so.20()(64bit)
+	=> rpm --build net-snmp-5.5-44... : pb : option --build n'existe pas ???? pourtant le man de rpm dit le contraire
+	=> alternative : utiliser rpm-build 
+	=> problème avec rpm-build...
+	=> changement de stratégie : yum search all lib|grep snmp
+	=> yum install net-snmp-libs.x86_64
+	=> ok
+=> ok
+
+Il reste plus que lustre-tests.... 
+=> pb dépendance : libmpi.so.1
+=> yum install libmpi.so.1 
+=> pb pas la bonne version. Installation pour i686
+=> yum install openmpi.x86_64
+=> ok
+
+
+
+lister les paquets installés : rpm -qa
+
+
+
+
+
+*********** redimensionnement LVM ****************
+
+
+Manque de place sur une VM
+4go de root et 2 go de swap
+objectif 5go de root 1go de swap
+reboot sur liveCD.
+mode rescue.
+redimensionnement des partitions
+=> lvscan
+=> lvresize -L -1GO /dev/vg_centos/lv_swap
+=> lvresize -L +1GO /dev/vg_centos/lv_root
+
+redimensionnement du système de fichier
+e2fsck -f /dev/vg_centosre/root
+ => fichier introuvable... ???
+ => démarrage sur un live CD pour pourvoir monter centos.
+ => mount
+ => /dev/mapper/vg_centosre-lv_root
+ => e2fsck -f /dev/mapper/vg_centos-lv_root
+ => OK
+ => resize2fs /dev/mapper/vg_centosre-lv_root
+ => OK
+reboot
+df -h
+OK
+
+\end{verbatim}
 \end{document}
