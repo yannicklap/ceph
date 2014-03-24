@@ -13,7 +13,9 @@
 \linespread{1.2}
 \setlength{\parskip}{5mm}
 \setlength\parindent{3.5mm}
-
+\usepackage{lscape}
+\usepackage{tabularx}
+\usepackage{graphicx}
 \graphicspath{{Pictures/}} 
 
 
@@ -1246,6 +1248,42 @@ OK
 \label{fig:identification}
 \end{figure}
 
+\subsection{Tableau}
 
+\begin{landscape}
+
+\begin{tabularx}{19cm}{|p{1.5cm}|p{1.5cm}|p{5cm}|p{5cm}|p{5cm}|}
+\hline
+qui? &semaine 1 &semaine 2 &semaine 3&semaine 4 \\
+\hline
+groupe entier & recherche documentaire & mise en place du dépôt git, recherche de plateforme collaborative style etherpad pour partager nos avancées en temps réel, trouver et choisir des machines, réalisation des étapes préliminaires à l'installation & finalisation de l'installation du cluster, cependant un crash du a des problèmes que nous n'étions pas en mesure de résoudre nous ont poussé à refaire le déploiement du cluster, cette fois-ci nous prévoyons un plan de sauvegarde&création du client et utilisation du cluster, transfert de fichiers, nous fonctionons actuellement sur une architecture minimaliste.\\ 
+\hline
+Julien & recherche documentaire & etherpad, choix des machines, réalisation des étapes préliminaires à l'installation & cf travaux pour le groupe entier\\
+\hline
+Jean & recherche documentaire & choix des machines, réalisation des étapes préliminaires a l'installation & cf travaux pour le groupe entier&cf travaux pour le groupe entier\\
+\hline
+Ricardo & Recherche documentaire & Choix des machines, réalisation des étapes préliminaires à l'installation & cf travaux pour le groupe entier\\
+\hline
+Yannick & Recherche documentaire & Mise en place du dépot git, rédaction du rapport hebdomadaire & cf travaux pour le groupe entier& cf travaux pour le groupe entier\\
+\hline
+\end{tabularx}
+\end{landscape}
+\begin{landscape}
+\begin{tabularx}{20cm}{|p{1.5cm}|p{4.7cm}|p{4.7cm}|p{4.7cm}|p{4.7cm}|}
+\hline
+qui? &semaine 5 &semaine 6 &semaine 7&semaine8\\
+\hline
+groupe entier & reflexion sur la préparation des benchs,tentative d'augmentation de la taille du cluster nécéssaire, reflexion sur la virtualisation, déploiement du cluster de test final(cf annexe) & deploiement de clusters virtuels, recherche documentaire sur lustre& déploiement de lustre, tentatives de résolutions de pannes sur le cluster ceph& rédaction du rapport final, tentative de dépannage de synchronisation du cluster\\ 
+\hline
+Julien & cf travaux groupe &cf travaux groupe & recherche sur l'utilisation de lustre avec une Centos, tests de déploiement lustre& recherche documentation lustre& finalisation et mise en service d'un cluster lustre \\
+\hline
+Jean &cf travaux de groupe& cf travaux de groupe & tentative de épannage du cluster ceph& cf travaux de groupe\\
+\hline
+Ricardo &cf travaux de groupe entier & recherche documentaire sur lustre & cf travaux pour le groupe entier, tentative d'installation de lustre sur Debian& cf travaux pour le groupe entier, tentative de deploiement de lustre sur Debian\\
+\hline
+Yannick & cf travaux de groupe &cf travaux de groupe, recherche documentaire sur lustre & cf travaux pour le groupe entier& cf travaux pour le groupe entier\\
+\hline
+\end{tabularx}
+\end{landscape}
 
 \end{document}
