@@ -87,7 +87,7 @@ génération appelé CRUSH \footnote{Ceph est propulsé par CRUSH (Controlled Re
 Attention il n'est pas encore recommandé de l'utiliser en production : celui-ci est encore en phase de développement.
 \newpage
 	\subsection{Architecture du cluster}
-	Nous avons choisit d'installer une configuration nous permettant de tester les performances de Ceph. Comme dit précédemment, Ceph a besoin de 3 types de nœuds différents. Nous avons choisit d'utiliser 6 machines pour 9 noeuds, ces machines seront utilisé sous Debian :
+	Nous avons choisi d'installer une configuration nous permettant de tester les performances de Ceph. Comme dit précédemment, Ceph a besoin de 3 types de nœuds différents. Nous avons choisi d'utiliser 6 machines pour 9 noeuds, ces machines seront utilisés sous Debian :
 \\\\-La première machine sera l'Admin node, elle contiendra aussi le premier monitor et le premier OSD :
 \begin{verbatim}
 nom machine : golem
@@ -124,27 +124,27 @@ nom machine : porygon
 ip : 192.168.1.48
 \end{verbatim}
 
-Nous avons également dû installer les clients qui utilise ce cluster nous les avons installé sur nos machines personnelles.
+Nous avons également dû installer les clients qui utilise ce cluster, nous les avons installés sur nos machines personnelles.
 
 	\subsection{Installation}
 	
-	Ceph a été créer pour fonctionner sur du matériel de base, pas besoin d'avoir de grosse configuration ou de matériel spécifique pour faire tourner ceph, ce qui rend la construction et le maintien d'un cluster de données de l'ordre du pétaoctets \footnote{Un pétaoctet contient \begin{math}10^{15}\end{math} octets} facilement et économiquement réalisable.
+	Ceph a été créé pour fonctionner sur du matériel de base, pas besoin d'avoir de grosse configuration ou de matériel spécifique pour le faire tourner, ce qui rend la construction et le maintien d'un cluster de données de l'ordre du pétaoctets \footnote{Un pétaoctet contient \begin{math}10^{15}\end{math} octets} facilement et économiquement réalisable.
 	Pour l'installation de Ceph, il faut d'abord configurer le matériel que nous allons utiliser.
 
  \subsubsection{Recommandation Matériel }	
 	
 	CPU :
-	MDS : Les serveurs de métadonnée \footnote{c'est une donnée servant à définir ou décrire une autre donnée quel que soit son support} redistribue dynamiquement leur metadonnée, ce qui utilise une grande quantité de puissance processeur \textit{CPU} \footnote{est le composant de l'ordinateur qui exécute les instructions machine des programmes informatiques.}. Les MDS doivent avoir un assez bon processeur (quad-core ou mieux).
-	Osd : Les serveur de donnée ceph font tourner le service RADOS, calculent le placement des datas avec CRUSH, repliquent les données, et maintiennent des copies de la carte \footnote{Une série de cartes comportant la carte de moniteur,la carte des OSDs,la carte PG, la carte des MDS et la carte CRUSH} (\textit{map}) du cluster. Les serveur de donnée ont un besoin raisonnables de puissance CPU.
-	Monitor : les monitor n'ont pas besoin de puissance CPU, ils ne font que maintenir une copie de la carte du cluster pour repérer les erreurs dans le cluster.
+	MDS : Les serveurs de métadonnées \footnote{c'est une donnée servant à définir ou à décrire une autre donnée quelle que soit son support} redistribue dynamiquement leurs metadonnées, ce qui utilise une grande quantité de puissance processeur \textit{CPU} \footnote{est le composant de l'ordinateur qui exécute les instructions machine des programmes informatiques.}. Les MDS doivent avoir un assez bon processeur (quad-core ou mieux).
+	Osd : Les serveurs de données Ceph font tourner le service RADOS, calculent le placement des datas avec CRUSH, repliquent les données, et maintiennent des copies de la carte \footnote{Une série de cartes comportant la carte des moniteurs,la carte des OSDs,la carte PG, la carte des MDS et la carte CRUSH} (\textit{map}) du cluster. Les serveurs de données ont un besoin raisonnable de puissance CPU.
+	Monitor : les monitors n'ont pas besoin de puissance CPU, ils ne font que maintenir une copie de la carte du cluster pour repérer les erreurs dans la grappe.
 	
 	RAM :
-	La ram est surtout utilisé par les serveurs de métadonnée et les monitors, car ils doivent être capable de parcourir leur données rapidement, ils doivent donc avoir une bonne quantité de RAM. Il est recommandé d'avoir 1 GB de RAM par daemon \footnote{désigne un type de programme informatique, un processus ou un ensemble de processus qui s'exécute en arrière-plan plutôt que sous le contrôle direct d'un utilisateur.}.
-	Les Osds n'utilisent pas beaucoup de RAM pour leurs fonctionnements normal, mais ils en utilisent plus si l'on lance une récupération de donnée.
+	La ram est surtout utilisée par les serveurs de métadonnée et les monitors, car ils doivent être capables de parcourir leurs données rapidement, ils doivent donc avoir une bonne quantité de mémoire vive. Il est recommandé d'avoir 1Go de RAM par daemon \footnote{désigne un type de programme informatique, un processus ou un ensemble de processus qui s'exécute en arrière-plan plutôt que sous le contrôle direct d'un utilisateur.}.
+	Les Osds n'utilisent pas beaucoup de mémoire vive pour leur fonctionnement normal, mais ils en utilisent plus si nous lançons une récupération de données.
 	
 	\subsection{Erreurs rencontrées lors de l'installation de Ceph}
 	\subsubsection{Erreur lors de l'installation du premier MDS}
-	Pendant notre 1ère installation de Ceph, nous avions réussit à installer :
+	Pendant notre 1ère installation de Ceph, nous avons réussi à installer :
 	\\ 1 Monitor sur golem et 2 OSDs sur golem et rondoudou, mais lorsque nous avons tenté d'installer le 1er MDS avec la commande :
 	\begin{verbatim}
 	ceph@golem:~/cluster$ceph-deploy mds create carapuce
@@ -174,7 +174,7 @@ File "/usr/lib/python2.7/dist-packages/ceph_deploy/mds.py", line 169,
   TypeError: 'NoneType' object is not iterable 
 	\end{verbatim}
 
-Après cette erreur le cluster que nous avions installé n’était plus utilisable , la commande :
+Après cette erreur le cluster que nous avons installé n’était plus utilisable, la commande :
 \begin{verbatim}
 ceph@golem:~/cluster$ceph status
 \end{verbatim}
@@ -200,9 +200,9 @@ nous a renvoyé :
     ^CError connecting to cluster: InterruptedOrTimeoutError
 \end{verbatim}
 
-Nous avons supprimer le cluster ceph avec purge autoremove, nous avons également supprimer le cluster de l'Admin Node et les fichier de conf et nous avons lancé une réinstallation complète de ceph. Pour cette réinstallation, nous avons suivi le tutoriel du site officiel pour recommencer.
+Nous avons supprimé le cluster Ceph avec 'purge autoremove', nous avons également supprimer le cluster de l'Admin Node et les fichiers de configuration. De plus, nous avons lancé une réinstallation complète du système de fichiers distribués. Pour cette réinstallation, nous avons suivi le tutoriel du site officiel pour recommencer.
 	\subsubsection{Problème de cluster}
-	Problème de cluster nous avions 3 cluster de ceph installé sur golem :
+	Problème de cluster nous avions 3 clusters de Ceph installés sur golem :
 	
  $ Un\ dans\ /home/root/cluster\ fsid\ =\ 490b1d93-f413-430b-b5d7-d632b7556f35$
 	 
@@ -210,26 +210,26 @@ Nous avons supprimer le cluster ceph avec purge autoremove, nous avons égalemen
  
 	 $ Un\ dans\ /home/ceph/cluster\ fsid\ =\ d4a63950-a12f-4e4d-983b-57583bf09bac$
 	 
-	 Mais lors de nos manipulations sur notre 1ére installation, nous avons lancé des commandes ceph-deploy en-dehors de notre répertoire cluster, ce qui a créer de nouveau fichier de configuration et un autre cluster instable avec un nom par défaut. Mais nous n'avions pas changer le nom par défaut de notre cluster et donc plusieurs cluster du même nom ont été créer, et les cluster en-dehors du répertoire cluster était instable, ce qui a posé problème lors du démarrage du service ceph.	
+	 Mais lors de nos manipulations sur notre 1ére installation, nous avons lancé des commandes 'ceph-deploy' en-dehors de notre répertoire cluster, ce qui a créé de nouveaux fichiers de configuration ainsi qu'un autre cluster instable avec un nom par défaut. Mais nous n'avons pas changé le nom par défaut de notre cluster, donc plusieurs clusters du même nom ont été créés, et les grappes en-dehors du répertoire cluster étaient instables. Ce qui a posé problème lors du démarrage du service Ceph.	
 
-On a alors purge toute l'installation de ceph avec :
+Nous avons alors purgé toute l'installation du système de fichiers avec :
 \begin{verbatim}
 ceph-deploy purgedata golem rondoudou carapuce behemot porygon smogogo
 ceph-deploy forgetkeys
 ceph-deploy purge golem rondoudou carapuce behemot porygon smogogo
 \end{verbatim}
 
-Pour avoir un seul cluster il faut lancer toutes les commandes d'installation de ceph dans un seul dossier : /home/ceph/cluster
+Pour avoir un seul cluster il faut lancer toutes les commandes d'installation de Ceph dans un seul dossier : /home/ceph/cluster
 
-on a ajouter dans le .bashrc de ceph des alias :
+on a ajouter dans le .bashrc de Ceph des alias :
 \\ alias ceph-deploy='cd /home/ceph/cluster; ceph-deploy' 
 \\ alias ceph='cd /home/ceph/cluster; ceph' 
 
 	\subsubsection{Problème de l'horloge système des machines}
-Vers la fin de notre projet nos machines on eu un décalage d'horloge (\textit{clock skew}) de quelque seconde, ce qui empêché ceph de fonctionner normalement, Ceph est comme un file system \footnote{c'est une façon de stocker les informations et de les organiser dans des fichiers} mais sur plusieurs machines si ces machines n'ont pas une horloge synchronisé, la copie de fichier peut causer des problèmes. Pour palier ce problème nous avons dû reconfigure ntp :
+Vers la fin de notre projet nos machines on eu un décalage d'horloge (\textit{clock skew}) de quelques secondes, ce qui a empêché Ceph de fonctionner normalement. Ceph est comme un file system \footnote{c'est une façon de stocker les informations et de les organiser dans des fichiers} mais sur plusieurs machines si ces machines n'ont pas une horloge synchronisée, la copie de fichiers peut causer des problèmes. Pour palier ce soucis, nous avons dû reconfigurer ntp :
 \begin{description}
 \item[Serveur NTP \textit{(Network Time Protocol "NTP")}:] 
-On a fait un serveur ntp sur golem en modifiant le fichier /etc/ntp.conf en enlevant les serveur de temps extérieur et en rajoutant golem comme serveur :
+Nous avons fait un serveur ntp sur golem en modifiant le fichier /etc/ntp.conf en enlevant les serveurs de temps extérieurs et en rajoutant golem comme serveur :
 
 \begin{verbatim}
   Fichier /etc/ntp.conf
@@ -247,12 +247,12 @@ broadcast 192.168.1.255 # l'adresse de broadcast
 
 Le serveur ntp est fonctionnel, il permet de diffuser son horloge sur les clients.
 \item [Client NTP :]
-L'installation du client ntp se fait avec apt:
+L'installation du client ntp se fait avec apt :
 \begin{verbatim}
 apt-get install ntpdate
 \end{verbatim}
 
-Nous avons ensuite lancé une mise à jour de l'horloge des client à partir du serveur ntp sur golem avec l'aide de :
+Nous avons ensuite lancé une mise à jour de l'horloge des clients à partir du serveur ntp sur golem, avec l'aide de :
 \begin{verbatim}
 ntpdate 192.168.1.51
 \end{verbatim}
@@ -263,14 +263,14 @@ et ensuite nous avons modifié le fichier /etc/ntp.conf pour rajouter le serveur
 server 192.168.1.51 
 \end{verbatim}
 
-Nos machines sont donc toutes synchronisée à partir de golem et nous n'avons plus de problème décalage d'horloge sur Ceph.
+Nos machines sont donc toutes synchronisées à partir de golem et nous n'avons plus de problème de décalage d'horloge sur Ceph.
 \end{description}
 
 	\subsection{Test de disponibilités}
-	Ceph permet de facilement ajouter/supprimer de nouveaux nœud dans le cluster : comme des monitors, des osds ou des mds.
+	Ceph permet d'ajouter/supprimer facilement de nouveaux nœuds dans le cluster : comme des monitors, des osds ou des mds.
 
 	\subsubsection{Test de surpression d'un MDS}
-	Vérification du sytéme sur ceph avec le mds planté :
+	Vérification du sytéme sur Ceph avec le mds planté :
 \begin{verbatim}
 ceph@golem:~/cluster-cheese$ceph health 
     HEALTH_WARN mds carapuce is laggy  
@@ -287,10 +287,10 @@ ceph@golem:~/cluster-cheese$ceph health
             15470 MB used, 15004 MB / 30475 MB avail 
                  192 active+clean 
 \end{verbatim}
-	Si le mds est enlevé du cluster, il suffit de le reconnecter au réseau et de relancer le service ceph pour qu'il se réactive.
-(carapuce  a planter,  on l'as relancer mais la carte réseau ne c'est pas relancer, on la lancer avec ifup eth1 et le mds remarche)
+	Si le mds est enlevé du cluster, il suffit de le reconnecter au réseau et de relancer le service Ceph pour qu'il se réactive.
+(carapuce a planté, nous l'avons relancé mais la carte réseau reste éteinte. Il faut donc la relancer avec 'ifup eth1' pour que le mds remarche)
 
-quand le mds à redémarré j'ai refait un ceph status sur golem :
+quand le mds à redémarré nous avons refait 'ceph status' sur golem :
 \begin{verbatim}
     ceph@golem:~/cluster-cheese$ceph status     
     cluster dde8d8a9-e880-4c81-8bc6-8ede2adbe71
@@ -306,10 +306,10 @@ quand le mds à redémarré j'ai refait un ceph status sur golem :
                  192 active+clean 
 \end{verbatim}
 
-Le MDS est de nouveau utilisable, mais il reste en standby car le mds qui l'as remplacé fonctionne bien et contient les métadonnées nécessaire pour permettre de surveiller Ceph.
+Le MDS est de nouveau utilisable, mais il reste en standby car le mds qui l'a remplacé fonctionne bien et contient les métadonnées nécessaires pour permettre de surveiller Ceph.
 
 	\subsubsection{Test de suppression d'un OSD}
-	Nous avons enlevé 1 OSD de notre cluster, nous vérifions l'état du cluster pour voir s'il fonctionne encore :
+	Nous avons enlevé 1 OSD de notre cluster, nous vérifons donc l'état du cluster pour voir s'il fonctionne encore :
 	
 	\begin{verbatim}
 	ceph@golem:~/cluster-cheese$ceph status     
@@ -327,11 +327,11 @@ Le MDS est de nouveau utilisable, mais il reste en standby car le mds qui l'as r
                  192 stale+clean+degraded
 \end{verbatim}	 
 
-on a donc réactivé l'osd manquant :
+nous avons donc réactivé l'osd manquant :
 \begin{verbatim}
 ceph-deploy osd activate rondoudou:sda3
 \end{verbatim}
-le système ceph est de nouveau "fonctionnel" après ces manipulations. 
+le système de fichiers distribués est de nouveau "fonctionnel" après ces manipulations. 
 \begin{verbatim}
 ceph@golem:~/cluster-cheese$ceph status     
     cluster dde8d8a9-e880-4c81-8bc6-8ede2adbe71
@@ -361,7 +361,7 @@ ceph@golem:~/cluster-cheese$ceph status
 \end{figure}
 
 \subsection{Introduction}
-Lustre est un système de fichiers distribué libre(sous licence GPL v2), utilisé pour de très grandes grappes de serveurs. Son nom vient de la combinaison de deux mots, «Linux» et «cluster». Le projet a commencé comme un projet de recherche en 1999 par Peter Braam, en 2007 Sun Microsystems a continué son développement, en 2010 avec l'acquisition de Sun Oracle a commencé à maintenir et sortir nouvelles versions de Lustre, en décembre du 2010 Oracle a arrêté le développement du système de fichiers version 2.x, plusieurs nouvelles organisations surgirent à fournir un soutien et de développement dans un modèle de développement communautaire ouvert, comprenant \textit{Whamcloud}, \textit{Open Scalable File Systems, Inc. (OpenSFS)}, \textit{EUROPEAN Open File Systems (EOFS)} et autres. En 2012 WhamCloud a été rachetée par Intel.\\
+Lustre est un système de fichiers distribués libre(sous licence GPL v2), utilisé pour de très grandes grappes de serveurs. Son nom vient de la combinaison de deux mots, «Linux» et «cluster». Le projet a commencé comme un projet de recherche en 1999 par Peter Braam, en 2007 Sun Microsystems a continué son développement, en 2010 avec l'acquisition de Sun Oracle a commencé à maintenir et sortir nouvelles versions de Lustre, en décembre du 2010 Oracle a arrêté le développement du système de fichiers version 2.x, plusieurs nouvelles organisations surgirent à fournir un soutien et de développement dans un modèle de développement communautaire ouvert, comprenant \textit{Whamcloud}, \textit{Open Scalable File Systems, Inc. (OpenSFS)}, \textit{EUROPEAN Open File Systems (EOFS)} et autres. En 2012 WhamCloud a été rachetée par Intel.\\
 
 
 Lustre a la possibilité de accueillir des dizaines de milliers de systèmes client et une grande quantité de données, pétaoctets\footnote{Un pétaoctet contient \begin{math}10^{15}\end{math} octets} de stockage et des centaines de gigaoctets(Go) de débit Entrée/Sortie. 
@@ -520,7 +520,7 @@ Aucune trace de Lustre... Plutôt inquiétant. Ce sentiment a été confirmé lo
 \center{\includegraphics[width=0.8\linewidth]{fig7}}
 \caption{Menu virt-manager d'une VM}
 \label{fig:identification}
-\end{figure}
+i\end{figure}
 
 Pour ajouter un live CD, il faut aller dans les paramètres de la machine virtuelle comme le montre la capture d'écran précédente et sélectionner les options du lecteur CD virtuel. Ensuite il faut cliquer sur le bouton 'Se connecter' à droite de la fenêtre . Enfin la petite fenêtre apparaît et il ne reste plus qu'à indiquer au logiciel l'emplacement de l'image ISO. Nous avons donc réussit à booter en live. Une question se pose : comment mettre à jour le GRUB de notre CentOS ? Pour cela nous sommes connecté à l'OS en chroot. Ainsi nous avons pu lancer la commande 'update-grub'. Nous avons donc redémarrer la machine en faisant attention de bien déconnecter le CD virtuel. Au final, aucun résultat. Toujours le même problème. Il fallait donc changer de méthode.
 
@@ -530,31 +530,31 @@ Parallèlement à la première tentative d'installation sur CentOS 6.5, en suiva
 
 Nous avons travaillé également avec KVM et l'outil graphique virt-manager pour créer une machine Virtuelle à laquelle nous avons attribué 7 cpus, 2 Go de mémoire vive et 20 Go de disque dur, cette machine était destinée principalement à la compilation du noyau Linux version 3.13.6, qui donne la possibilité d'activer les drivers compatibles avec Lustre.
 
-Le plan était compiler et installer le nouveau noyau su cette machine et depuis les sources compiler les paquets nécessaires pour l'installation de Lustre sur chaque noeud, cloner la machine 2 fois, réduire ses ressources pour les donner 2 cpus à chacune et 1 Go de mémoire vive, déployer sur les machines clonées et la première machine les clients Lustre.
+Le plan était de compiler et d'installer le nouveau noyau sur cette machine depuis les sources, et compiler les paquets nécessaires pour l'installation de Lustre sur chaque noeud, cloner la machine 2 fois, réduire ses ressources pour donner 2 cpus à chacune et 1 Go de mémoire vive, déployer sur les machines clonées et la première machine les clients Lustre.
 
-Nous avons commencé pour la compilation du noyau Linux v13.13.6, la dernière version «stable», nous sommes allés sur le site officiel\footnote{https://www.kernel.org/} pour télécharger les paquets sources.
+Nous avons commencé par la compilation du noyau Linux v13.13.6, la dernière version «stable». Nous sommes allés sur le site officiel\footnote{https://www.kernel.org/} pour télécharger les paquets sources.
 
-On a obtenu le fichier «linux-3.13.6.tar.xz» dans notre machine virtuelle, pour extraire le contenu nous avons utilisé la commande:
+Nous avons obtenu le fichier «linux-3.13.6.tar.xz» dans notre machine virtuelle. Pour en extraire le contenu nous avons utilisé la commande:
 
 \begin{verbatim}
 	rsmrg@LUT:$tar -Jxvf linux-3.13.6.tar.xz
 \end{verbatim}
 
-Ensuite on a changé le répertoire pour nous déplacer vers celui que nous avons extrait du fichier, aussi on a installé les outils de compilation:
+Ensuite nous avons changé le répertoire pour nous déplacer vers celui que nous avons extrait du fichier. Nous avons également installé les outils de compilation:
 
 \begin{verbatim}
 rsmrg@LUT:$cd linux-3.16.6 ; sudo apt-get install debconf-utils dpkg-dev
 debhelper  build-essential kernel-package libncurses5-dev
 \end{verbatim}
 
-Nous avons copié la configuration du noyau précédant, après on a exécuté, make oldconfig pour répondre aux nouvelles questions de configurations du noyau:
+Nous avons copié la configuration du noyau précédent, après nous avons exécuté 'make oldconfig' pour répondre aux nouvelles questions de configurations du noyau:
 
 \begin{verbatim}
 rsmrg@LUT:$sudo cp /boot/config- 'uname -r' .config
 rsmrg@LUT:$make oldconfig
 \end{verbatim}
 
-Pour activer les options Lustre on est allé au menu de configuration de noyau dans la partie «Staging drivers» (figure \ref{kernel}).
+Pour activer les options Lustre nous sommes allés dans le menu de configuration de noyau dans la partie «Staging drivers» (figure \ref{kernel}).
 
 \begin{verbatim}
 rsmrg@LUT:$make menuconfig
@@ -578,19 +578,19 @@ rsmrg@LUT:$sudo make -j7 deb-pkg
 \label{kernel}
 \end{figure}
 
-Installation du nouveau kernel depuis les paquets généres:
+Installation du nouveau kernel depuis les paquets générés:
 
 \begin{verbatim}
 rsmrg@LUT:$sudo dpkg -i ../*.deb
 \end{verbatim}
 
-Après la compilation du noyau de Linux on a essayé d'installer les paquets Lustre sur le système d'exploitation, mais sans succès, après avoir parlé avec le tuteur du projet, il a recommandé l'arrêt de travail avec Ubuntu pour  ne pas perdre plus de temps et de nous consacrer entièrement au déploiement de Lustre avec logiciels plus anciens, mais supportés, comme c'est le cas du système d'exploitation CentOS 6.3.
+Après la compilation du noyau de Linux, nous avons essayé d'installer les paquets Lustre sur le système d'exploitation, mais sans succès. Après avoir parlé avec le tuteur du projet, il a recommandé d'arrêter le travail avec Ubuntu pour ne pas perdre trop de temps. Nous devons nous consacrer entièrement au déploiement de Lustre avec un OS plus ancien, mais supporté, comme c'est le cas du système d'exploitation CentOS 6.3.
 
 \newpage
 \subsubsection{CentOS 6.3-Lustre}
-C'est la dernière étape pour l'installation de Lustre. Pour cette expérience, le choix s'est reporté à nouveau sur un CentOS. A une différence près. Le version du système d'exploitation utilisé ce coup ci est la version 6.3, au lieu de 6.5 (dernière version stable). La version 6.3 est sensé poser beaucoup moins de soucis en rapport avec le noyau. En effet, l'installation de ce dernier n'est plus nécessaire. Il suffit donc d'installer les paquets RPMs de Lustre. C'est encore une fois Lustre version 2.5 qui est utilisé lors de cette procédure. 
+C'est la dernière étape pour l'installation de Lustre. Pour cette expérience, le choix s'est reporté à nouveau sur un CentOS. A une différence près. La version du système d'exploitation utilisée ce coup ci est la version 6.3, au lieu de 6.5 (dernière version stable). La version 6.3 est sensée poser beaucoup moins de soucis en rapport avec le noyau. En effet, l'installation de ce dernier n'est plus nécessaire. Il suffit donc d'installer les paquets RPMs de Lustre. C'est encore une fois Lustre version 2.5 qui a été utilisé lors de cette procédure. 
 
-Il faut donc installer une nouvelle fois tous les paquets en réglant les problèmes de dépendance. Tout se passe correctement. Quand, vers la fin de l'installation, des messages d'erreurs apparaissent signifiant que Lustre à besoin d'espace disque... L’exécution de 'df -h' prouve en effet le problème : quelques centaines de MO disponible sur la partition système. En effet par soucis d'espace disque sur la machine physique, la taille des VMs a été revue à la baisse. Elle est passée de 8GO à 6GO. Lors des installations de CentOS en mode minimal, le système d'installation de l'OS ne nous popose qu'un minimum de choix, ce qui veut dire que des choix par défauts sont effectués. Parmi eux, CentOS créé un SWAP, mémoire vive virtuelle, automatiquement. La taille de ce SWAP est proportionnelle à l'espace disponible de la VM, elle représente un certain pourcentage. La répartition de l'espace de stockage de la machine se présente donc ainsi : 4GO pour le système et 2GO pour le SWAP. Récupérer 1GO dans le SWAP afin d'alimenter la partition système serait suffisant sans être handicapant pour l'installation de Lustre. C'est à ce moment que une autre option choisie par la distribution entre en jeu, c'est l'utilisation de LVM pour Logical Volume Manager. LVM est un gestionnaire de volume logique permettant de créer, déplacer, redimensionner et détruire des partitions facilement, sans avoir de problème avec GNU GRUB par exemple. Il est vivement recommandé d'utiliser cette technologie sur des serveurs pour en faciliter la maintenance, les performances n'étant pas beaucoup altérées. CentOS est une distribution optimisée pour une mise ne production sur serveurs, c'est pourquoi ce choix est compréhensible et tout à fait respectable. LVM va donc nous être utile pour diminuer le SWAP et pour augmenter respectivement la partition système. Le redimensionnement à chaud, c'est à dire redimensionner une partition pendant qu'elle est montée, est possible. Seulement vu que il faut manipuler la partition système de l'OS et que nous ne disposons plus assez d'espace libre pour envisager un clone de la machine virtuelle, il est préférable d'assurer le coup et de redimensionner à froid. Pour cela, il a fallu démarrer la machine sur un LiveCD, même iso : CentOS 6.3.
+Il faut donc installer une nouvelle fois tous les paquets en réglant les problèmes de dépendance. Tout se passe correctement. Quand, vers la fin de l'installation, des messages d'erreurs apparaissent signifiant que Lustre à besoin d'espace disque... L’exécution de 'df -h' prouve en effet le problème : quelques centaines de MO disponibles sur la partition système. Par soucis d'espace disque sur la machine physique, la taille des VMs a été revue à la baisse. Elle est passée de 8GO à 6GO. Lors des installations de CentOS en mode minimal, le système d'installation de l'OS ne nous popose qu'un minimum de choix, ce qui veut dire que des choix par défauts sont effectués. Parmi eux, CentOS créé un SWAP, une mémoire vive virtuelle, tout ça automatiquement. La taille de ce SWAP est proportionnelle à l'espace disponible de la VM, elle représente un certain pourcentage. La répartition de l'espace de stockage de la machine se présente donc ainsi : 4GO pour le système et 2GO pour le SWAP. Récupérer 1GO dans le SWAP afin d'alimenter la partition système serait suffisant sans être handicapant pour l'installation de Lustre. C'est à ce moment qu'une autre option choisie par la distribution entre en jeu : c'est l'utilisation de LVM pour Logical Volume Manager. LVM est un gestionnaire de volume logique permettant de créer, déplacer, redimensionner et détruire des partitions facilement, sans avoir de problème avec GNU GRUB par exemple. Il est vivement recommandé d'utiliser cette technologie sur des serveurs pour en faciliter la maintenance, les performances n'étant pas beaucoup altérées. CentOS est une distribution optimisée pour une mise ne production sur serveurs, c'est pourquoi ce choix est compréhensible et tout à fait respectable. LVM va donc nous être utile pour diminuer le SWAP et pour augmenter respectivement la partition système. Le redimensionnement à chaud, c'est à dire redimensionner une partition pendant qu'elle est montée, c'est possible. Seulement vu qu'il faut manipuler la partition système de l'OS et que nous ne disposons plus assez d'espace libre pour envisager un clone de la machine virtuelle, il est préférable d'assurer le coup et de redimensionner à froid. Pour cela, il a fallu démarrer la machine sur un LiveCD, même iso : CentOS 6.3.
 
 \begin{figure}[H]
 \center{\includegraphics[width=0.8\linewidth]{fig8}}
@@ -632,7 +632,7 @@ Excellente nouvelle, CentOS démarre sans incident sur le noyau Lustre. Il reste
 \label{fig:identification}
 \end{figure}
 
-Encore une fois, l'interface de virt-manager se trouve être efficace et simple à la fois. Pour ajouter un matériel, il faut donc cliquer sur le bouton 'Ajouter du matériel' en bas de la fenêtre des options de la machine virtuelle. Ensuite la deuxième fenêtre apparaît où il faut choisir le type de périphérique à ajouter. L'onglet par défaut est 'Storage', celui qui nous concerne. À partir de là il ne reste plus qu'à choisir la taille de cette partition. Les autres options peuvent être laissées par défaut. Dans la capture d'écran précédente, en réalité ce disque est déjà créé : IDE Disk 2. Pour commencer le déploiement de Lustre, c'est le serveur de métadonnée alias MDS ou MGS (le vocabulaire n'est pas toujours le même dans la documentation) qu'il faut d'abord installer. Le MDT est inclus dans cette démarche. Pour retrouver le nom du périphérique qui vient fraîchement d'être installé, l'utilisation de la commande 'fdisk -l' est obligatoire. Ainsi, pour toute nos machines, le disque virtuel se trouve être /dev/sda. Voici donc comment le formater avec Lustre sur notre premier serveur:
+Encore une fois, l'interface de virt-manager se trouve être efficace et simple à la fois. Pour ajouter un matériel, il faut donc cliquer sur le bouton 'Ajouter du matériel' en bas de la fenêtre des options de la machine virtuelle. Ensuite la deuxième fenêtre apparaît où il faut choisir le type de périphérique à ajouter. L'onglet par défaut est 'Storage', celui qui nous concerne. À partir de là il ne reste plus qu'à choisir la taille de cette partition. Les autres options peuvent être laissées par défaut. Dans la capture d'écran précédente, ce disque a déjà été créé : IDE Disk 2. Pour commencer le déploiement de Lustre, c'est le serveur de métadonnée alias MDS ou MGS (le vocabulaire n'est pas toujours le même dans la documentation) qu'il faut d'abord installer. Le MDT est inclus dans cette démarche. Pour retrouver le nom du périphérique qui vient fraîchement d'être installé, l'utilisation de la commande 'fdisk -l' est obligatoire. Ainsi, pour toute nos machines, le disque virtuel se trouve être /dev/sda. Voici donc comment le formater avec Lustre sur notre premier serveur:
 
 \begin{figure}[H]
 \center{\includegraphics[width=0.8\linewidth]{fig13}}
