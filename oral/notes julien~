@@ -1,0 +1,40 @@
+**** Introduction ***
+
+Loi de Moore : 2x + de transistors/2ans
+Réseaux de + en + rapide
+
+
+Arrivée smartphones & tablettes
+	=> plusieurs entités/personne
+	=> besoin de partage de l'information
+	=> données accéssibles n'importe où géographiquement
+	=> cloud informatique
+
+
+backend : Ensembles de ressources
+	- système d'authentification
+	- Puissance de calculs
+	- Bande passante
+	- Base de données
+	- Chat
+	- système de stockage de fichiers (le notre)
+frontend : Transparence maximum pour l'utilisateur
+	=> dématérialisation de l'infrastructure informatique
+3 types de services :
+	- IaaS : Infrastrucure as a service
+		bas niveau
+		client : administration d'une VM
+		fournisseur : administration matérielle et interconnnexions
+	- PaaS : Platform as a service
+		moyen niveau
+		client : administration d'un service
+		fournisseur : administration matérielle + système
+	- SaaS : Software as a service
+		haut niveau
+		client : utilisation d'un service
+		fournisseur : administration matérielle + système + service
+
+ 
+Système de fichiers distribués : indispensable pour cloud SaaS proposant du stockage de masse tel que Dropbox, owncloud
+	
+	
